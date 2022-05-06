@@ -28,20 +28,20 @@ class Game {
         Game(NumRooms);
 
         // setter and getter Number of Rooms
-        setNumRooms();
-        getNumRooms();
+        void setNumRooms();
+        int getNumRooms();
         
         // setter and getter Murder Weapon
-        setMurWeapon();
-        getMurWeapon();
+        void setMurWeapon();
+        string getMurWeapon();
         
         // setter and getter Murderer
-        setMurderer();
-        getMurderer();
+        void setMurderer();
+        string getMurderer();
         
         // setter and getter Murder Location
-        setMurLocation();
-        getMurLocation();
+        void setMurLocation();
+        string getMurLocation();
         
         // destructor
         ~Game();

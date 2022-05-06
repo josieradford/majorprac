@@ -8,12 +8,12 @@
 using namespace std;
 
 // defult constructor
-Player(){
+Player :: Player(){
 
 }
 
 // virtual make accusation function
-virtual makeAccusation(string Weapon, string Character, Room Area){
+void Player :: makeAccusation(string Weapon, string Character, Room Area){
     cout << "You believe that the murder weapon was " << Weapon;
     cout << ", the murderer was " << Character;
     cout << " and the murder location was " << Area << endl;
@@ -33,21 +33,21 @@ virtual makeAccusation(string Weapon, string Character, Room Area){
 }
 
 // virtual change location function
-virtual changeLocation(Room _Location){
+void Player :: changeLocation(Room _Location){
     Location = _Location;
 }
 
 // getter function Location
-getLocation(){
+string Player :: getLocation(){
     return Location;
 }
 
 // getter function Current Accusation
-getAccusation(){
+string Player :: getAccusation(){
     return Accusation;
 }
 
 // destructor
-~Player(){
+Player :: ~Player(){
 
 }

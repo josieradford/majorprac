@@ -8,12 +8,12 @@
 using namespace std;
 
 // creates a defult Game
-Game(){
+Game :: Game(){
     
 }
 
 // creates a modifiable Game with interchangable characteristics
-Game(NumRooms, MurWeapon, Murderer, MurLocation){
+Game :: Game(int NumRooms, string MurWeapon, string Murderer, Room MurLocation){
     getNumRooms();
     getMurWeapon();
     getMurderer();
@@ -21,7 +21,7 @@ Game(NumRooms, MurWeapon, Murderer, MurLocation){
 }
 
 // creates a Game with randomised murder weapon, room and murderer
-Game(NumRooms){
+Game :: Game(int NumRooms){
     getNumRooms();
     setMurWeapon(string Weapons[rand() % 5]);
     getMurWeapon();
@@ -32,41 +32,41 @@ Game(NumRooms){
 }
 
 // setter and getter Number of Rooms
-setNumRooms(int _NumRooms){
+void Game :: setNumRooms(int _NumRooms){
     // randomise this in future
     NumRooms = _NumRooms;
 }
-getNumRooms(){
+int Game :: getNumRooms(){
     return NumRooms;
 }
 
 // setter and getter Murder Weapon
-setMurWeapon(string _MurWeapon){
+void Game :: setMurWeapon(string _MurWeapon){
     MurWeapon = _MurWeapon;
 }
-getMurWeapon(){
+string Game :: getMurWeapon(){
     return MurWeapon;
 }
 
 // setter and getter Murderer
-setMurderer(string _Murderer){
+void Game :: setMurderer(string _Murderer){
     // randomise this in future
     Murderer = _Murderer;
 }
-getMurderer(){
+string Game :: getMurderer(){
     return Murderer;
 }
 
 // setter and getter Murder Location
-setMurLocation(string _MurLocation){
+void Game :: setMurLocation(string _MurLocation){
     // randomise this in future
     MurLocation = _MurLocation;
 }
-getMurLocation(){
+string Game :: getMurLocation(){
     return MurLocation;
 }
 
 // destructor
-~Game(){
+Game :: ~Game(){
     
 }

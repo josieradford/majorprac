@@ -20,16 +20,16 @@ class Player {
         Player();
 
         // virtual make accusation function
-        virtual makeAccusation(Weapon, Murderer, Area); 
+        virtual void makeAccusation(Weapon, Murderer, Area); 
 
         // virtual change location function
-        virtual changeLocation(Location);
+        virtual void changeLocation(Location);
 
         // getter function Location
-        getLocation();
+        string getLocation();
         
         // getter function Current Accusation
-        getAccusation();
+        string getAccusation();
 
         // destructor
         ~Player();

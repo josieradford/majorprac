@@ -21,16 +21,16 @@ class Room {
         Room(weapon, character, passage);
 
         // setter and getter Murder Weapon
-        setWeapon();
-        getWeapon();
+        void setWeapon();
+        string getWeapon();
         
         // setter and getter Murderer
-        setCharacter();
-        getCharacter();
+        void setCharacter();
+        string getCharacter();
         
         // setter and getter Secret Passage
-        setPassage();
-        getPassage();
+        void setPassage();
+        bool getPassage();
 
         // destructor
         ~Room();
