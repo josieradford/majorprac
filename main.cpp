@@ -2,6 +2,6 @@
 #include <cmath>
 #include <string>
 
-int main(){
+int mai.n(){
 
 }
