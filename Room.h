@@ -1,5 +1,5 @@
-#ifndef "ROOM_H"
-#define "ROOM_H"
+#ifndef ROOM_H
+#define ROOM_H
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -18,20 +18,21 @@ class Room {
         Room();
 
         // constructs Room with weapon, characters 
-        Room(weapon, character, passage);
+        Room(string Weapon, string Character, bool Passage);
 
         // setter and getter Murder Weapon
-        void setWeapon();
+        void setWeapon(string _Weapon);
         string getWeapon();
         
         // setter and getter Murderer
-        void setCharacter();
+        void setCharacter(string _Character);
         string getCharacter();
         
         // setter and getter Secret Passage
-        void setPassage();
+        void setPassage(bool _Passage);
         bool getPassage();
 
         // destructor
         ~Room();
-}
+};
+#endif

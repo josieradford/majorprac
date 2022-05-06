@@ -13,7 +13,7 @@ Game :: Game(){
 }
 
 // creates a modifiable Game with interchangable characteristics
-Game :: Game(int NumRooms, string MurWeapon, string Murderer, Room MurLocation){
+Game :: Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation){
     getNumRooms();
     getMurWeapon();
     getMurderer();
@@ -23,11 +23,11 @@ Game :: Game(int NumRooms, string MurWeapon, string Murderer, Room MurLocation){
 // creates a Game with randomised murder weapon, room and murderer
 Game :: Game(int NumRooms){
     getNumRooms();
-    setMurWeapon(string Weapons[rand() % 5]);
+    setMurWeapon(Weapons[rand() % 5]);
     getMurWeapon();
-    setMurderer(string Characters[rand() % 5]);
+    setMurderer(Characters[rand() % 5]);
     getMurderer();
-    setMurLocation(string Rooms[rand() % 5]);
+    setMurLocation(Rooms[rand() % 5]);
     getMurLocation();
 }
 

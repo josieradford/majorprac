@@ -13,7 +13,7 @@ Room :: Room(){
 }
 
 // constructs Room with weapon, characters 
-Room :: Room(Weapon, Character, Passage){
+Room :: Room(string Weapon, string Character, bool Passage){
     getWeapon();
     getCharacter();
     getPassage();

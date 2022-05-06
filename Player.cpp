@@ -13,10 +13,10 @@ Player :: Player(){
 }
 
 // virtual make accusation function
-void Player :: makeAccusation(string Weapon, string Character, Room Area){
+void Player :: makeAccusation(string Weapon, string Character, string Location){
     cout << "You believe that the murder weapon was " << Weapon;
     cout << ", the murderer was " << Character;
-    cout << " and the murder location was " << Area << endl;
+    cout << " and the murder location was " << Location << endl;
     // compare to Packet in game
     // give feedback as if same or not
     if (Weapon != MurWeapon){

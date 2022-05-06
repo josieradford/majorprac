@@ -1,5 +1,5 @@
-#ifndef "PLAYER_H"
-#define "PLAYER_H"
+#ifndef PLAYER_H
+#define PLAYER_H
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -10,7 +10,7 @@ using namespace std;
 
 class Player {
     protected:
-        Room Location;
+        string Location;
         // this should be an array of some description ?
         // could hold elements in a string (Area element isnt string)
         // could make accusation Player type ? (doesn't make sense but idk)
@@ -20,10 +20,10 @@ class Player {
         Player();
 
         // virtual make accusation function
-        virtual void makeAccusation(Weapon, Murderer, Area); 
+        virtual void makeAccusation(string Weapon, string Murderer, string Location); 
 
         // virtual change location function
-        virtual void changeLocation(Location);
+        virtual void changeLocation(string Location);
 
         // getter function Location
         string getLocation();
@@ -33,4 +33,5 @@ class Player {
 
         // destructor
         ~Player();
-}
+};
+#endif
