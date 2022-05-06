@@ -9,7 +9,7 @@ using namespace std;
 
 // creates a defult Game
 Game(){
-
+    
 }
 
 // creates a modifiable Game with interchangable characteristics
@@ -17,6 +17,17 @@ Game(NumRooms, MurWeapon, Murderer, MurLocation){
     getNumRooms();
     getMurWeapon();
     getMurderer();
+    getMurLocation();
+}
+
+// creates a Game with randomised murder weapon, room and murderer
+Game(NumRooms){
+    getNumRooms();
+    setMurWeapon(string Weapons[rand() % 5]);
+    getMurWeapon();
+    setMurderer(string Characters[rand() % 5]);
+    getMurderer();
+    setMurLocation(string Rooms[rand() % 5]);
     getMurLocation();
 }
 
@@ -31,7 +42,6 @@ getNumRooms(){
 
 // setter and getter Murder Weapon
 setMurWeapon(string _MurWeapon){
-    // randomise this in future
     MurWeapon = _MurWeapon;
 }
 getMurWeapon(){

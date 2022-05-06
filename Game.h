@@ -10,7 +10,10 @@ using namespace std;
 
 class Game {
     protected:
-        int NumRooms;
+        const string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
+        const string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+        const string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
+        int NumRooms = 5;
         string MurWeapon;
         string Murderer;
         string MurLocation;
@@ -20,6 +23,9 @@ class Game {
 
         // creates a modifiable Game with interchangable characteristics
         Game(NumRooms, MurWeapon, Murderer, MurLocation);
+
+        // creates a Game with randomised murder weapon, room and murderer
+        Game(NumRooms);
 
         // setter and getter Number of Rooms
         setNumRooms();
