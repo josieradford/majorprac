@@ -12,6 +12,7 @@ class Player {
     protected:
         string Location;
         // this should be an array of some description ?
+            //doesn't need to be an array bc we don't need to access previous locations?
         // could hold elements in a string (Area element isnt string)
         // could make accusation Player type ? (doesn't make sense but idk)
         string Accusation;

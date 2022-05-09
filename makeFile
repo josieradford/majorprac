@@ -1,0 +1,10 @@
+Player.o: Player.cpp Player.h
+	g++ -Wall -c Player.cpp
+
+Person.o: Player.cpp Player.h Person.h Person.cpp
+	g++ -Wall -c Person.cpp
+
+Computer.o: Player.cpp Player.h Computer.h Computer.cpp
+	g++ -Wall -c Computer.cpp
+
+//not really sure how makefiles work

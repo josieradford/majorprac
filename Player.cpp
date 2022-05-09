@@ -19,7 +19,7 @@ void Player :: makeAccusation(string Weapon, string Character, string Location){
     cout << " and the murder location was " << Location << endl;
     // compare to Packet in game
     // give feedback as if same or not
-    if (Weapon != MurWeapon){
+    if (Weapon != MurWeapon){ //how to carry over variable from Game.h?
         cout << Weapon << "was not the murder weapon !" << endl;
     }
     if (Character != Murderer){
