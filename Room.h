@@ -4,12 +4,12 @@
 #include <string>
 #include <cmath>
 #include "Player.h"
-#include "Game.h"
 
 using namespace std;
 
 class Room {
     protected:
+        string RoomName;
         string Weapon;
         string Character;
         bool Passage;
@@ -18,7 +18,11 @@ class Room {
         Room();
 
         // constructs Room with weapon, characters 
-        Room(string Weapon, string Character, bool Passage);
+        Room(string Weapon, string Character, bool Passage, string RoomName);
+
+        //set get room name
+        void setRoomName(string _RoomName);
+        string getRoomName();
 
         // setter and getter Murder Weapon
         void setWeapon(string _Weapon);

@@ -10,14 +10,16 @@ using namespace std;
 
 class Game {
     protected:
-        string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-        string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
-        string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-        int NumRooms;
+        string Weapons[5];
+        string Characters[5] ;
+        string Rooms[5];
+        int NumRooms; //must be 5 or less
+        Room *ptr;
         string MurWeapon;
         string Murderer;
         string MurLocation;
-        int maxNumGuesses;
+        int MaxNumGuesses;
+
     public:
         // creates a default Game
         Game();
@@ -28,25 +30,25 @@ class Game {
         // creates a Game with randomised murder weapon, room and murderer
         Game(int NumRooms);
 
+        //fills rooms array
+        void fillRooms();
+        Room* getRooms();
+
         // setter and getter Number of Rooms
-        void setNumRooms();
         int getNumRooms();
         
         // setter and getter Murder Weapon
-        void setMurWeapon(string _Weapon);
         string getMurWeapon();
         
         // setter and getter Murderer
-        void setMurderer(string _Murderer);
         string getMurderer();
         
         // setter and getter Murder Location
-        void setMurLocation(string _MurLocation);
         string getMurLocation();
 
         int getMaxNumGuesses();
         
         // destructor
-        ~Game();
+        //~Game();
 };
 #endif

@@ -1,54 +1,56 @@
-#include <iostream>
-#include <string>
-#include <cmath>
-#include "Game.h"
-#include "Player.h"
 #include "Room.h"
 
-using namespace std;
 
 // defult Room constructor
-Room :: Room(){
-
+Room::Room(){
+    this->Weapon = "";
+    this->Character = "";
+    this->RoomName = "";
+    this->Passage = false;
 }
 
 // constructs Room with weapon, characters 
-Room :: Room(string Weapon, string Character, bool Passage){
-    getWeapon();
-    getCharacter();
-    getPassage();
+Room:: Room(string Weapon, string Character, bool Passage, string RoomName){
+    this->Weapon = Weapon;
+    this->Character = Character;
+    this->Passage = Passage;
+    this->RoomName = RoomName;
+
+}
+
+void Room::setRoomName(string _RoomName){
+    this->RoomName = _RoomName;
+}
+
+string Room::getRoomName(){
+    return RoomName;
 }
 
 // setter and getter Murder Weapon
-void Room :: setWeapon(string _Weapon){
-    // randomise this in future
-    Weapon = _Weapon;
+void Room::setWeapon(string _Weapon){
+    this->Weapon = _Weapon;
 }
-string Room :: getWeapon(){
+string Room::getWeapon(){
     return Weapon;
 }
-
+        
 // setter and getter Murderer
-void Room :: setCharacter(string _Character){
-    // randomise this in future
-    Character = _Character;
+void Room::setCharacter(string _Character){
+    this->Character = _Character;
 }
-string Room :: getCharacter(){
+string Room::getCharacter(){
     return Character;
 }
-
+        
 // setter and getter Secret Passage
-void Room :: setPassage(bool _Passage){
-    // set this as constant for if one of four rooms
-    // eg if Ballroom/Conservatory OR if Library/Garden
-    // that way there is always a link
-    Passage = Passage;
+void  Room::setPassage(bool _Passage){
+    this->Passage = _Passage;
 }
-bool Room :: getPassage(){
+
+bool Room::getPassage(){
     return Passage;
 }
-
 // destructor
-Room :: ~Room(){
+Room::~Room(){
 
 }
