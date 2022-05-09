@@ -17,18 +17,19 @@ class Game {
         string MurWeapon;
         string Murderer;
         string MurLocation;
+        int maxNumGuesses;
     public:
-        // creates a defult Game
+        // creates a default Game
         Game();
 
         // creates a modifiable Game with interchangable characteristics
-        Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation);
+        Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, int maxNumGuesses);
 
         // creates a Game with randomised murder weapon, room and murderer
         Game(int NumRooms);
 
         // setter and getter Number of Rooms
-        void setNumRooms(int _NumRooms);
+        void setNumRooms();
         int getNumRooms();
         
         // setter and getter Murder Weapon
@@ -42,6 +43,8 @@ class Game {
         // setter and getter Murder Location
         void setMurLocation(string _MurLocation);
         string getMurLocation();
+
+        int getMaxNumGuesses();
         
         // destructor
         ~Game();

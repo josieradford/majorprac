@@ -7,13 +7,18 @@ using namespace std;
 
 class Person : protected Player{ //protected carries over everything but private
     private:
+    //records whether the current turn is a final accusation
+    bool finalAccusation;
+
+    //count how many guesses the player has made
+    int numGuesses;
         
     public:
         // virtual make accusation function
-        void makeAccusation(string Weapon, string Murderer, string Location); 
+        void makeAccusation(); 
 
         // virtual change location function
-        void changeLocation(string Location);
+        void changeLocation();
        
 
 

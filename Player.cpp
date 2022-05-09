@@ -42,6 +42,7 @@ string Player :: getLocation(){
     return Location;
 }
 
+
 // getter function Current Accusation
 string Player :: getAccusation(){
     return Accusation;
