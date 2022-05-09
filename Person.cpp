@@ -18,7 +18,7 @@ void Person::makeAccusation(){
 
     //determine whether making final accusation or not
     
-    While(validResponse == false && numGuesses < max) {
+    While(validResponse == false && numGuesses < max);{
         cout << "Do you want to make your final accusation?" << endl;
         cin >> response;
 
@@ -34,7 +34,7 @@ void Person::makeAccusation(){
             case "n":
             case "no":
             case "No":
-                final accusation = false;
+                finalAccusation = false;
                 validResponse = true;
                 break;
             default: //if no valid input is given
@@ -44,7 +44,7 @@ void Person::makeAccusation(){
     }
 
     //checks if player is on final turn
-    if (numGuesses = max){
+    if (numGuesses == max){
         finalAccusation = true;
         cout << "You must make your final accusation this turn." << endl;
     }
@@ -52,13 +52,13 @@ void Person::makeAccusation(){
 
     //making accusation
     cout << "Enter your guess for the muderer: " << endl;
-    cin >> murderer ;
+    cin >> Murderer ;
 
     cout << "Enter your guess for the murder weapon: " << endl;
-        cin >> weapon ;
+        cin >> Weapon ;
 
         cout << "Enter your guess for the room: " << endl;
-        cin >> location ;
+        cin >> Location ;
 
         //need to add some kind of check for vaild input against weapon, murderer and room names
 
