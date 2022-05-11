@@ -11,11 +11,11 @@ class Person : protected Player{ //protected carries over everything but private
     bool finalAccusation;
 
     //count how many guesses the player has made
-    int numGuesses;
+    int guessCount;
         
     public:
         // virtual make accusation function
-        void makeAccusation(); 
+        void makeAccusation(int maxGuesses); 
 
         // virtual change location function
         void changeLocation();

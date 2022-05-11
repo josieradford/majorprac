@@ -24,7 +24,7 @@ class Player {
 
         // virtual make accusation function
         //function does not take any parameters  bc the person will have to input manually
-        virtual void makeAccusation(); 
+        virtual void makeAccusation(int maxGuesses); 
 
         // virtual change location function
         //function does not take any parameters  bc the person will have to input manually

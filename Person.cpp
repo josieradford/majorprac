@@ -1,20 +1,17 @@
 #include <iostream>
 #include <string>
-#include <cmath>
-#include "Game.h"
-#include "Player.h"
-#include "Room.h"
 #include "Person.h"
+#include "Game.h"
 
 using namespace std;
 
 //  make accusation function
 // function shouldn't take in variables when declared as they are user input????
-void Person::makeAccusation(){
+void Person::makeAccusation(int maxGuesses){
     finalAccusation = false; //create this boolean as part of Person.h for access outside of thise scope
     bool validResponse = false;
     string response;
-    int max = Game::getMaxNumGuesses();
+    int max = maxGuesses;
 
     //determine whether making final accusation or not
     
