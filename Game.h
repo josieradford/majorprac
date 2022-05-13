@@ -15,9 +15,8 @@ class Game {
         int NumRooms; //must be 5 or less
         Room *ptrR;
         Player *ptrP;
-        string MurWeapon;
-        string Murderer;
-        string MurLocation;
+        string murderInfo; //arbitrary for getter
+
         int MaxNumGuesses;
 
     public:
@@ -37,6 +36,11 @@ class Game {
         // setter and getter Number of Rooms
         int getNumRooms();
         
+
+        //getter murder info
+        string getMurder();
+
+        /*
         // setter and getter Murder Weapon
         string getMurWeapon();
         
@@ -45,10 +49,11 @@ class Game {
         
         // setter and getter Murder Location
         string getMurLocation();
+        */
 
         int getMaxNumGuesses();
 
-        int checkAccusation(string weaponGuess, string charGuess, string locationGuess);
+        
         
         // destructor
         //~Game();

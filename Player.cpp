@@ -29,8 +29,19 @@ string Player::getLocation(){
 }
         
 // getter function Current Accusation
-string* Player::getAccusation(){
-    return Accusation;
+int Player::checkAccusation(){
+    int correctCount = 0;
+
+    if (currentGuessWeapon == MurWeapon){
+        correctCount++;
+    }
+    if (currentGuessMurderer == Murderer){
+        correctCount++;
+    }
+    if (currentGuessLocation == MurLocation){
+        correctCount++;
+    } 
+     return correctCount;
 }
 
 // destructor

@@ -2,7 +2,6 @@
 #include <string>
 //#include "Player.h" //is this line necessary
 #include "Person.h"
-#include "Game.h"
 
 using namespace std;
 
@@ -110,7 +109,7 @@ void Person::makeAccusation(){
     //increase counter of how many turns the user has had
     guessCount ++;
 
-    int correctCounter = Game::checkAccusation(currentGuessWeapon, currentGuessMurderer, currentGuessLocation);
+    int correctCounter = checkAccusation();
 }
 
 // virtual change location function

@@ -17,7 +17,7 @@ int main(){
         cout << rooms[i].getRoomName() << endl;
     }
 
-    cout << *(player1.getAccusation()) << " "<< player1.getLocation() << endl;
+    //cout << *(player1.getAccusation()) << " "<< player1.getLocation() << endl;
    
 
    

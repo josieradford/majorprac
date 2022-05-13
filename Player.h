@@ -20,6 +20,11 @@ class Player {
         string currentGuessWeapon;
         string currentGuessLocation;
 
+        //murderer info
+        string Murderer;
+        string MurLocation;
+        string MurWeapon;
+
     //public:
         // default constructor
         Player();
@@ -35,8 +40,8 @@ class Player {
         // getter function Location
         string getLocation();
         
-        // getter function Current Accusation
-        string* getAccusation();
+        // checker function Current Accusation
+        int checkAccusation();
 
         // destructor
         ~Player();

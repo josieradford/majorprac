@@ -8,22 +8,34 @@ using namespace std;
 
 //default with no input
 Game::Game(){
-    //setup rooms
-    this->NumRooms = 4;
-    ptrR = new Room[NumRooms];
-
-    ptrP = new Player[2];
-    ptrP[1] = Person();
-    //ptrP[2] = Computer();
 
     MaxNumGuesses = 4;
 
+    //setup rooms
+    this->NumRooms = 4;
+    ptrR = new Room[NumRooms];
     fillRooms();
-    //set up murder
-    this->Murderer = Characters[rand() % NumRooms];
-    this->MurLocation = Rooms[rand() % NumRooms];
-    this->MurWeapon = Weapons[rand() % NumRooms];
 
+    //create players
+    int numPlayers = 2;
+    ptrP = new Player[numPlayers];
+    ptrP[0] = Person();
+    //ptrP[1] = Computer();
+
+    //set up murder so that each player holds info
+    murderInfo = " ";
+    string Murderer = Characters[rand() % NumRooms];
+    string MurLocation = Rooms[rand() % NumRooms];
+    string MurWeapon = Weapons[rand() % NumRooms];
+
+    murderInfo = Murderer + MurLocation + MurWeapon;
+
+    for (int i = 0; i < numPlayers; i++){
+        ptrP[i].Murderer = Murderer;
+        ptrP[i].MurLocation = MurLocation;
+        ptrP[i].MurWeapon = MurWeapon;
+    }
+    
 }
 
 //creates a modifiable Game with interchangable characteristics
@@ -35,11 +47,18 @@ Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, 
 
     fillRooms();
 
-    //set up murder
-    this->Murderer = Murderer;
-    this->MurLocation = MurLocation;
-    this->MurWeapon = MurWeapon;
+    //create players
+    int numPlayers = 2;
+    ptrP = new Player[numPlayers];
+    ptrP[0] = Person();
+    //ptrP[1] = Computer();
 
+    //set up murder
+    for (int i = 0; i < numPlayers; i++){
+        ptrP[i].Murderer = Murderer;
+        ptrP[i].MurLocation = MurLocation;
+        ptrP[i].MurWeapon = MurWeapon;
+    }
 }
 
 
@@ -51,10 +70,23 @@ Game::Game(int NumRooms){
     ptrR = new Room[NumRooms];
 
     fillRooms();
-    //set up murder
-    this->Murderer = Characters[rand() % NumRooms];
-    this->MurLocation = Rooms[rand() % NumRooms];
-    this->MurWeapon = Weapons[rand() % NumRooms];
+
+    //create players
+    int numPlayers = 2;
+    ptrP = new Player[numPlayers];
+    ptrP[0] = Person();
+    //ptrP[1] = Computer();
+
+    //set up murder so that each player holds info
+    string Murderer = Characters[rand() % NumRooms];
+    string MurLocation = Rooms[rand() % NumRooms];
+    string MurWeapon = Weapons[rand() % NumRooms];
+    
+    for (int i = 0; i < numPlayers; i++){
+        ptrP[i].Murderer = Murderer;
+        ptrP[i].MurLocation = MurLocation;
+        ptrP[i].MurWeapon = MurWeapon;
+    }
 }
 
 //adds a room to array
@@ -166,7 +198,12 @@ Room* Game::getRooms(){
 int Game::getNumRooms(){
     return NumRooms;
 }
-        
+
+string Game::getMurder(){
+    return murderInfo;
+}
+
+/*        
 //getter Murder Weapon
 string Game::getMurWeapon(){
     return MurWeapon;
@@ -181,25 +218,13 @@ string Game::getMurderer(){
 string Game::getMurLocation(){
     return MurLocation;
 }
+*/
 
 int Game::getMaxNumGuesses(){
     return MaxNumGuesses;
 }
 
-int Game::checkAccusation(string weaponGuess, string charGuess, string locationGuess){
-    int correctCount = 0;
 
-    if (weaponGuess == MurWeapon){
-        correctCount++;
-    }
-    if (charGuess == Murderer){
-        correctCount++;
-    }
-    if (locationGuess == MurLocation){
-        correctCount++;
-    } 
-     return correctCount;
-}
         
 // destructor
 /*
