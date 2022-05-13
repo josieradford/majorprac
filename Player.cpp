@@ -14,7 +14,14 @@ Player::Player(){
     }
 
 }
+//virtuals
+void Player::makeAccusation(){
 
+}
+
+void Player::changeLocation(){
+    
+}
 
 // getter function Location
 string Player::getLocation(){
