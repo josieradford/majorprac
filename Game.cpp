@@ -54,6 +54,7 @@ Game::Game(int NumRooms){
 
 void Game::fillRooms(){
     //simplified version
+    /*
     string possibleRoomNames[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     
     string possibleRoomWeapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
@@ -65,17 +66,20 @@ void Game::fillRooms(){
         ptr[i].setCharacter(possibleRoomCharacters[rand() %5]);
         ptr[i].setWeapon(possibleRoomWeapons[rand() %5]);
     }
-    
+    */
 
 
 
-    /* LOGIC (BROKEN)
+     //LOGIC (BROKEN)
     string possibleRoomNames[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    string usedRoomNames[] = {};
+    string* usedRoomNames = new string[5];
+    //string usedRoomNames[] = {};
     string possibleRoomWeapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    string usedRoomWeapons[] = {};
+    string* usedRoomWeapons = new string[5];
+    //string usedRoomWeapons[] = {};
     string possibleRoomCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
-    string usedRoomCharacters[] = {};
+    string* usedRoomCharacters = new string[5];
+    //string usedRoomCharacters[] = {};
 
     for (int i = 0; i < NumRooms; i++){
         bool nameUsed = false;
@@ -134,7 +138,12 @@ void Game::fillRooms(){
         }
         
     }
-    */
+
+    free (usedRoomCharacters);
+    free (usedRoomNames);
+    free (usedRoomWeapons);
+
+    
 }
 
 
