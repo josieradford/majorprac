@@ -5,20 +5,22 @@
 #include <string>
 using namespace std;
 
-class Person : protected Player{ //protected carries over everything but private
+class Person : public Player{ //protected carries over everything but private
     private:
     //records whether the current turn is a final accusation
     bool finalAccusation;
 
     //count how many guesses the player has made
     int guessCount;
-        
+    int maxGuesses;
     public:
-        // virtual make accusation function
-        void makeAccusation(int maxGuesses); 
+    Person();
+    Person(int _maxGuesses); //uses to initialise maxGuesses
 
-        // virtual change location function
-        void changeLocation();
+    void makeAccusation(); //virtual from Player.h
+    void changeLocation(); //virtual from Player.h
+    ~Person();
+       
        
 
 
