@@ -14,6 +14,7 @@ Player::Player(){
     }
 
 }
+
 //virtuals
 void Player::makeAccusation(){
 
