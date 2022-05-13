@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "Player.h"
+#include "Person.h"
+#include "Computer.h"
 #include <string>
 
 using namespace std;
@@ -7,7 +10,11 @@ using namespace std;
 Game::Game(){
     //setup rooms
     this->NumRooms = 4;
-    ptr = new Room[NumRooms];
+    ptrR = new Room[NumRooms];
+
+    ptrP = new Player[2];
+    ptrP[1] = Person();
+    //ptrP[2] = Computer();
 
     MaxNumGuesses = 4;
 
@@ -23,7 +30,7 @@ Game::Game(){
 Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, int MaxNumGuesses){
         //setup rooms
     this->NumRooms = NumRooms;
-    ptr = new Room[NumRooms];
+    ptrR = new Room[NumRooms];
     this->MaxNumGuesses = MaxNumGuesses;
 
     fillRooms();
@@ -41,7 +48,7 @@ Game::Game(int NumRooms){
     //setup rooms
     this->NumRooms = NumRooms;
     this->MaxNumGuesses = NumRooms;
-    ptr = new Room[NumRooms];
+    ptrR = new Room[NumRooms];
 
     fillRooms();
     //set up murder
@@ -99,7 +106,7 @@ void Game::fillRooms(){
         
         //sets room name
         if (nameUsed == false){
-            ptr[i].setRoomName(newRoomName);
+            ptrR[i].setRoomName(newRoomName);
             usedRoomNames[i] = newRoomName;
         }
         
@@ -116,7 +123,7 @@ void Game::fillRooms(){
         
         //sets character to room
         if (characterUsed == false){
-            ptr[i].setCharacter(newRoomCharacter);
+            ptrR[i].setCharacter(newRoomCharacter);
             usedRoomCharacters[i] = newRoomCharacter;
         }
         
@@ -133,22 +140,22 @@ void Game::fillRooms(){
         
         //sets weapon to room
         if (weaponUsed == false){
-            ptr[i].setWeapon(newRoomWeapon);
+            ptrR[i].setWeapon(newRoomWeapon);
             usedRoomWeapons[i] = newRoomWeapon;
         }
         
     }
 
-    free (usedRoomCharacters);
-    free (usedRoomNames);
-    free (usedRoomWeapons);
+    delete[] (usedRoomCharacters);
+    delete[] (usedRoomNames);
+    delete[] (usedRoomWeapons);
 
     
 }
 
 
 Room* Game::getRooms(){
-    return ptr;
+    return ptrR;
 
 }
 
@@ -178,11 +185,26 @@ string Game::getMurLocation(){
 int Game::getMaxNumGuesses(){
     return MaxNumGuesses;
 }
+
+int Game::checkAccusation(string weaponGuess, string charGuess, string locationGuess){
+    int correctCount = 0;
+
+    if (weaponGuess == MurWeapon){
+        correctCount++;
+    }
+    if (charGuess == Murderer){
+        correctCount++;
+    }
+    if (locationGuess == MurLocation){
+        correctCount++;
+    } 
+     return correctCount;
+}
         
 // destructor
 /*
 Game:: ~Game(){
-    delete ptr;
+    delete ptrR;
 
 }
 */

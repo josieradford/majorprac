@@ -14,7 +14,11 @@ class Player {
 
         //accusation array using: 1Character, 2Weapon, 3Room
         string* Accusation;
-        
+
+        //currentGuess
+        string currentGuessMurderer;
+        string currentGuessWeapon;
+        string currentGuessLocation;
 
     //public:
         // default constructor

@@ -13,7 +13,8 @@ class Game {
         string Characters[5] ;
         string Rooms[5];
         int NumRooms; //must be 5 or less
-        Room *ptr;
+        Room *ptrR;
+        Player *ptrP;
         string MurWeapon;
         string Murderer;
         string MurLocation;
@@ -46,6 +47,8 @@ class Game {
         string getMurLocation();
 
         int getMaxNumGuesses();
+
+        int checkAccusation(string weaponGuess, string charGuess, string locationGuess);
         
         // destructor
         //~Game();

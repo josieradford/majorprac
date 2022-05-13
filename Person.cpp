@@ -2,6 +2,7 @@
 #include <string>
 //#include "Player.h" //is this line necessary
 #include "Person.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -41,6 +42,11 @@ void Person::makeAccusation(){
     string response;
     int max = maxGuesses;
 
+        //to be filled by user input
+    string currentGuessLocation = " ";
+    string currentGuessMurderer = " ";
+    string currentGuessWeapon = " ";
+
     //determine whether making final accusation or not
     
     while (validResponse == false && guessCount < max) {
@@ -74,21 +80,18 @@ void Person::makeAccusation(){
         cout << "You must make your final accusation this turn." << endl;
     }
 
-    //to be filled by user input
-    string Murderer = " ";
-    string Weapon = " ";
-    string Location = " ";
+
 
 
     //making accusation
     cout << "Enter your guess for the muderer: " << endl;
-    cin >> Murderer ;
+    cin >> currentGuessMurderer ;
 
     cout << "Enter your guess for the murder weapon: " << endl;
-        cin >> Weapon ;
+        cin >> currentGuessWeapon ;
 
         cout << "Enter your guess for the room: " << endl;
-        cin >> Location ;
+        cin >> currentGuessLocation;
 
         //need to add some kind of check for vaild input against weapon, murderer and room names
 
@@ -96,16 +99,18 @@ void Person::makeAccusation(){
     
         //making final accusation
         if (finalAccusation == true){
-            cout << "It was" << Murderer << ", with the " << Weapon << " in the "
-            << Location << "." << endl; 
+            cout << "It was" << currentGuessMurderer << ", with the " << currentGuessWeapon << " in the "
+            << currentGuessLocation << "." << endl; 
 
         } else{ // making a guess
-            cout << "Was it " <<  Murderer << ", with the " << Weapon << " in the "
-            << Location << "?" << endl; 
+            cout << "Was it " <<  currentGuessMurderer << ", with the " << currentGuessWeapon << " in the "
+            << currentGuessLocation << "?" << endl; 
         }
     
     //increase counter of how many turns the user has had
     guessCount ++;
+
+    int correctCounter = Game::checkAccusation(currentGuessWeapon, currentGuessMurderer, currentGuessLocation);
 }
 
 // virtual change location function
