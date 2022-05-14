@@ -47,7 +47,6 @@ void Person::makeAccusation(){
     string currentGuessWeapon = " ";
 
     //determine whether making final accusation or not
-    
     while (validResponse == false && guessCount < max) {
         char response = ' ';
 
@@ -79,18 +78,19 @@ void Person::makeAccusation(){
         cout << "You must make your final accusation this turn." << endl;
     }
 
-
-
-
     //making accusation
     cout << "Enter your guess for the muderer: " << endl;
-    cin >> currentGuessMurderer ;
+    cin >> currentGuessMurderer;
+    getline(cin, currentGuessMurderer);
+    Accusation[2] = currentGuessMurderer;
 
     cout << "Enter your guess for the murder weapon: " << endl;
-        cin >> currentGuessWeapon ;
+    cin >> currentGuessWeapon ;
+    Accusation[1] = currentGuessWeapon;
 
-        cout << "Enter your guess for the room: " << endl;
-        cin >> currentGuessLocation;
+    cout << "Enter your guess for the room: " << endl;
+    cin >> currentGuessLocation;
+    Accusation[3] = currentGuessLocation;
 
         //need to add some kind of check for vaild input against weapon, murderer and room names
 
@@ -98,7 +98,7 @@ void Person::makeAccusation(){
     
         //making final accusation
         if (finalAccusation == true){
-            cout << "It was" << currentGuessMurderer << ", with the " << currentGuessWeapon << " in the "
+            cout << "It was" << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
             << currentGuessLocation << "." << endl; 
 
         } else{ // making a guess
@@ -110,6 +110,10 @@ void Person::makeAccusation(){
     guessCount ++;
 
     int correctCounter = checkAccusation();
+}
+
+string Person :: getAccusation(){
+    return *Accusation;
 }
 
 // virtual change location function

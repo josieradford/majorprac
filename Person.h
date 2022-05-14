@@ -16,12 +16,15 @@ class Person : public Player{ //protected carries over everything but private
     //count how many guesses the player has made
     int guessCount;
     int maxGuesses;
+
     public:
     Person();
     Person(int _maxGuesses); //uses to initialise maxGuesses
 
     void makeAccusation(); //virtual from Player.h
     void changeLocation(); //virtual from Player.h
+
+    string getAccusation();
     //~Person();
        
        
