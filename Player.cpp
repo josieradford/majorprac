@@ -1,5 +1,7 @@
- #include "Player.h"
- #include <string>
+#include "Player.h"
+#include <iostream>
+#include <string>
+#include <cmath>
 
  using namespace std;
  

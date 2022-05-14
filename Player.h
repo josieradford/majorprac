@@ -2,9 +2,7 @@
 #define PLAYER_H
 #include <iostream>
 #include <string>
-//#include "Person.h"
-//#include "Room.h"
-//#include "Game.h"
+#include <cmath>
 
 using namespace std;
 

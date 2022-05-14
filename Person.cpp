@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-//#include "Player.h" //is this line necessary
+#include <cmath>
 #include "Person.h"
 
 using namespace std;
@@ -41,7 +41,7 @@ void Person::makeAccusation(){
     string response;
     int max = maxGuesses;
 
-        //to be filled by user input
+    //to be filled by user input
     string currentGuessLocation = " ";
     string currentGuessMurderer = " ";
     string currentGuessWeapon = " ";
@@ -118,7 +118,5 @@ void Person::changeLocation(){
 
 }
 
-Person:: ~Person(){
-
-    
-}
+//Person:: ~Person(){
+//}

@@ -1,4 +1,9 @@
+#include <iostream>
+#include <string>
+#include <cmath>
 #include "Room.h"
+
+using namespace std;
 
 
 // defult Room constructor

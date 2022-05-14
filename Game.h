@@ -1,9 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
+
+#include "Player.h"
+#include "Room.h"
+
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "Room.h"
 
 using namespace std;
 
@@ -31,7 +34,7 @@ class Game {
 
         //fills rooms array
         void fillRooms();
-        Room* getRooms();
+        Room * getRooms();
 
         // setter and getter Number of Rooms
         int getNumRooms();
@@ -52,8 +55,6 @@ class Game {
         */
 
         int getMaxNumGuesses();
-
-        
         
         // destructor
         //~Game();

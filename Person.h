@@ -2,7 +2,9 @@
 #define PERSON_H
 
 #include "Player.h"
+#include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 class Person : public Player{ //protected carries over everything but private
@@ -20,7 +22,7 @@ class Person : public Player{ //protected carries over everything but private
 
     void makeAccusation(); //virtual from Player.h
     void changeLocation(); //virtual from Player.h
-    ~Person();
+    //~Person();
        
        
 
