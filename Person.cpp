@@ -10,10 +10,10 @@ Person:: Person(){
     guessCount = 0;
     maxGuesses = 4;
     this-> Location = "emptyL";
-    Accusation = new string[3];
+    Accusation = new string[4];
 
     //empty accusation array
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < 4; i++){
         Accusation[i] = "emptyA";
     }
 
@@ -26,10 +26,10 @@ Person:: Person(int _maxGuesses){
     guessCount = 0;
 
     this-> Location = "emptyL";
-    Accusation = new string[3];
+    Accusation = new string[4];
 
     //empty accusation array
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < 4; i++){
         Accusation[i] = "emptyA";
     }
 }
@@ -80,13 +80,17 @@ void Person::makeAccusation(){
 
     //making accusation
     cout << "Enter your guess for the muderer: " << endl;
-    cin >> currentGuessMurderer;
-    getline(cin, currentGuessMurderer);
-    Accusation[2] = currentGuessMurderer;
+    // enter in both parts of murderer name
+    for (int i = 1; i < 3; i++){
+        cin >> Accusation[i];
+    }
+    /*cin >> Accusation[1];
+    getline(cin, Accusation[1]);
+    cout << "2 " << Accusation[1] << endl;*/
 
     cout << "Enter your guess for the murder weapon: " << endl;
     cin >> currentGuessWeapon ;
-    Accusation[1] = currentGuessWeapon;
+    Accusation[0] = currentGuessWeapon;
 
     cout << "Enter your guess for the room: " << endl;
     cin >> currentGuessLocation;
@@ -95,17 +99,16 @@ void Person::makeAccusation(){
         //need to add some kind of check for vaild input against weapon, murderer and room names
 
         cout << "Your accusation is:" << endl;
-    
         //making final accusation
         if (finalAccusation == true){
-            cout << "It was" << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
+            cout << "It was" << Accusation[1] << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
             << currentGuessLocation << "." << endl; 
 
         } else{ // making a guess
-            cout << "Was it " <<  currentGuessMurderer << ", with the " << currentGuessWeapon << " in the "
+            cout << "Was it " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
             << currentGuessLocation << "?" << endl; 
         }
-    
+
     //increase counter of how many turns the user has had
     guessCount ++;
 
@@ -113,7 +116,7 @@ void Person::makeAccusation(){
 }
 
 string Person :: getAccusation(){
-    return *Accusation;
+    return Accusation[4];
 }
 
 // virtual change location function
