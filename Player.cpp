@@ -8,10 +8,10 @@
  // default constructor
 Player::Player(){
     this-> Location = "emptyL";
-    Accusation = new string[3];
+    Accusation = new string[4];
 
     //empty accusation array
-    for (int i = 0; i < 3; i++){
+    for (int i = 0; i < 4; i++){
         Accusation[i] = "emptyA";
     }
 

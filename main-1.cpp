@@ -24,7 +24,12 @@ int main(){
 
     player2.setDifficulty();
 
-    player1.makeAccusation();
+    //player1.makeAccusation();
+    player2.makeAccusation();
+    player2.makeAccusation();
+    player2.makeAccusation();
+    player2.makeAccusation();
+    player2.makeAccusation();
 
     cout << (player1.getAccusation()) << " "<< player1.getLocation() << endl;
    

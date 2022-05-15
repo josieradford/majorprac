@@ -18,6 +18,8 @@ class Computer : public Player{ //protected carries over everything but private
 
     //determine difficulty level
     int difficulty;
+
+    string * compLastGuess;
     
     public:
     Computer();
@@ -28,6 +30,9 @@ class Computer : public Player{ //protected carries over everything but private
     // determine the level of difficulty
     void setDifficulty();
     int getDifficulty();
+    //void DifficultyLevel(int difficulty);
+
+    int randomNum();
 
     //~Computer();
 };
