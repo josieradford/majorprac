@@ -47,6 +47,10 @@ int Player::checkAccusation(){
      return correctCount;
 }
 
+void Player :: setDifficulty(){
+    
+}
+
 // destructor
 
 Player::~Player(){

@@ -128,5 +128,9 @@ void Person::changeLocation(){
 
 }
 
+void Person :: setDifficulty(){
+
+}
+
 //Person:: ~Person(){
 //}

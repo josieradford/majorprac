@@ -41,6 +41,9 @@ class Player {
         // checker function Current Accusation
         int checkAccusation();
 
+        // set difficulty levels
+        virtual void setDifficulty();
+
         // destructor
         ~Player();
 };

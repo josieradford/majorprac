@@ -34,6 +34,9 @@ class Game {
         // creates a Game with randomised murder weapon, room and murderer
         Game(int NumRooms);
 
+        // creates a Game with randomised murder weapon, room and murderer
+        Game(int NumRooms, int numPlayers);
+
         //fills rooms array
         void fillRooms();
         Room * getRooms();

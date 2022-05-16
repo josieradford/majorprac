@@ -21,6 +21,7 @@ class Person : public Player{ //protected carries over everything but private
 
     void makeAccusation(); //virtual from Player.h
     void changeLocation(); //virtual from Player.h
+    void setDifficulty();
 
     string getAccusation();
     //~Person();
