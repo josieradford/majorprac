@@ -51,48 +51,48 @@ void Computer::makeAccusation(){
     }
 
     // to set difficulty - not working im not passing it correctly
-    /*if (difficulty == 1 || guessCount == 0){
+    if (difficulty == 1 || guessCount == 0){
         //to be filled by random input
-        for (int i = 0; i < 3; i ++){
-            compLastGuess[i] = possibleRoom
-        }
-        
-        compLastGuess[] = possibleRoom[rand() % 5];
-        cout << "here" << currentGuessLocation << endl;
-        compLastGuess[2] = currentGuessLocation;
-        cout << compLastGuess[2] << endl;
-        string currentGuessMurderer = possibleCharacters[rand() % 5];
-        compLastGuess[0] = currentGuessMurderer;
-        cout << compLastGuess[0] << endl;
-        string currentGuessWeapon = possibleWeapons[rand() % 5];
-        compLastGuess[1] = currentGuessWeapon;
-        cout << compLastGuess[1] << endl;
+        compLastGuess[2] = possibleRoom[rand() % 5];
+        compLastGuess[0] = possibleCharacters[rand() % 5];
+        compLastGuess[1] = possibleWeapons[rand() % 5];
     }
     else if (difficulty == 2 && guessCount != 0){
         string possibleRoom2[4];
         string possibleWeapons2[4];
         string possibleCharacters2[4];
 
-        // options for accusation
+        // removes options for accusation to 'remember' last guess
         for (int i = 0; i < 5; i++){
             if (compLastGuess[2] != possibleRoom[i]){
                 for (int j = 0; j < 4; j++){
                     possibleRoom2[j] = possibleRoom[i];
-                    cout << possibleRoom2[j] << endl;
+                    //cout << possibleRoom2[j] << endl;
+                }
+            }
+			if (compLastGuess[0] != possibleCharacters[i]){
+                for (int j = 0; j < 4; j++){
+                    possibleCharacters2[j] = possibleCharacters[i];
+                    //cout << possibleCharacters2[j] << endl;
+                }
+            }
+			if (compLastGuess[1] != possibleWeapons[i]){
+                for (int j = 0; j < 4; j++){
+                    possibleWeapons2[j] = possibleWeapons[i];
+                    //cout << possibleWeapons2[j] << endl;
                 }
             }
         }
         //to be filled by random input
-        string currentGuessLocation = possibleRoom2[rand()];
-        cout << "here " << currentGuessLocation << endl;
-        string currentGuessMurderer = possibleCharacters2[rand() % 4];
-        string currentGuessWeapon = possibleWeapons2[rand() % 4];
-    }*/
+        compLastGuess[2] = possibleRoom2[rand() % 4];
+        compLastGuess[0] = possibleCharacters2[rand() % 4];
+        compLastGuess[1] = possibleWeapons2[rand() % 4];
+    }
 
-    //to be filled by random input NOt RANDOMISING RN
+    /*//to be filled by random input NOt RANDOMISING RN
     string currentGuessLocation = possibleRoom[(rand() % 5)];
     string currentGuessMurderer = possibleCharacters[rand() % 5];
-    string currentGuessWeapon = possibleWeapons[rand() % 5];
+    string currentGuessWeapon = possibleWeapons[rand() % 5];*/
 
     //checks if player is on final turn
     if (guessCount == maxGuesses){
@@ -103,10 +103,10 @@ void Computer::makeAccusation(){
     //making final accusation
     if (finalAccusation == true){
         cout << "Computer believes it was: ";
-        cout << currentGuessMurderer << " with the " << currentGuessWeapon << " in the "  << currentGuessLocation << endl;
+        cout << compLastGuess[0] << " with the " << compLastGuess[1] << " in the "  << compLastGuess[2] << endl;
     } else{ // making a guess
         cout << "Computer thinks it may have been: ";
-        cout << currentGuessMurderer << " with the " << currentGuessWeapon << " in the "  << currentGuessLocation << endl;
+        cout << compLastGuess[0] << " with the " << compLastGuess[1] << " in the "  << compLastGuess[2] << endl;
     }
 
     //increase counter of how many turns the user has had

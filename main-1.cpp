@@ -10,9 +10,11 @@
 using namespace std;
 
 int main(){
-    Game game1;
+    Game game1 = Game(5);
     Person player1 = Person();
     Computer player2 = Computer();
+
+    cout << "here" << endl;
 
     Room *rooms = game1.getRooms();
     
@@ -24,12 +26,10 @@ int main(){
 
     player2.setDifficulty();
 
-    //player1.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
+    for (int j = 0; j < 5; j++){
+        player1.makeAccusation();
+        player2.makeAccusation();
+    }
 
     cout << (player1.getAccusation()) << " "<< player1.getLocation() << endl;
    

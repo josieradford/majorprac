@@ -2,6 +2,8 @@
 #define GAME_H
 
 #include "Player.h"
+#include "Person.h"
+#include "Computer.h"
 #include "Room.h"
 
 #include <iostream>
