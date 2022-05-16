@@ -100,7 +100,7 @@ void Person::makeAccusation(){
     cout << "Your accusation is:" << endl;
     //making final accusation
     if (finalAccusation == true){
-        cout << "It was " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
+        cout << endl << "It was " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
         << currentGuessLocation << "." << endl; 
 
     } else{ // making a guess
