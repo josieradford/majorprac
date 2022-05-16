@@ -227,9 +227,7 @@ void Game::fillRooms(){
 Game :: Game(int numRooms, int numPlayers){
      //fill arrrays
     string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    
     string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    
     string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
 
     MaxNumGuesses = 4;
@@ -252,11 +250,14 @@ Game :: Game(int numRooms, int numPlayers){
     cout << "The difficulty level selected will be applied to all players." << endl;
     players[1]->setDifficulty();
     // uncomment if we want to make specific to each computer player
-    /*for(int m = 0; m < numPlayers; m++){
+    cout << "You've selected to have " << (numPlayers - 1) << " computer players" << endl;
+    cout << "Each difficulty level selected will be applied to the corresponding players." << endl;
+    for(int m = 0; m < numPlayers; m++){
         if (players[m] != players[0]){
+            cout << "For player " << m << " " ;
             players[m]->setDifficulty();
         }
-    }*/
+    }
 
     //create players
     ptrP = new Player[numPlayers];
