@@ -286,6 +286,24 @@ Game :: Game(int numRooms, int numPlayers){
     }    
 }
 
+/*// getter function Current Accusation
+int Game::checkAccusation(string *Accusation){
+    int correctCount = 0;
+    getMurder();
+
+    cout << MurWeapon << " test" << endl;
+
+    if (Accusation[0] == MurWeapon){
+    correctCount++;
+    }
+    if (Accusation[1]+Accusation[2] == Murderer){
+    correctCount++;
+    }
+    if (Accusation[3] == MurLocation){
+    correctCount++;
+    } 
+    return correctCount;
+}*/
 
 Room* Game::getRooms(){
     return ptrR;

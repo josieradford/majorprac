@@ -60,6 +60,8 @@ class Game {
         */
 
         int getMaxNumGuesses();
+
+        //int checkAccusation(string * Accusation);
         
         // destructor
         //~Game();

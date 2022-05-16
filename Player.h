@@ -39,7 +39,7 @@ class Player {
         string getLocation();
         
         // checker function Current Accusation
-        int checkAccusation();
+        int checkAccusation(string *Accusation);
 
         // set difficulty levels
         virtual void setDifficulty();

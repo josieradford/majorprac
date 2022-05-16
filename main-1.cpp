@@ -24,21 +24,21 @@ int main(){
         cout << rooms[i].getRoomName() << endl;
     }
 
-    player2.setDifficulty();
+    //player2.setDifficulty();
 
-    for (int j = 0; j < 5; j++){
+    //for (int j = 0; j < 5; j++){
         player1.makeAccusation();
         player2.makeAccusation();
-    }
+    //}
 
-    cout << (player1.getAccusation()) << " "<< player1.getLocation() << endl;
+    //cout << (player1.getAccusation()) << " "<< player1.getLocation() << endl;
    
-    Room room1 = Room("Knife", "Purple", false, "Garden");
+    //Room room1 = Room("Knife", "Purple", false, "Garden");
 
-    cout << room1.getCharacter() << endl;
-    cout << room1.getWeapon() << endl;
-    cout << room1.getPassage() << endl;
-    cout << room1.getRoomName() << endl;
+    //cout << room1.getCharacter() << endl;
+    //cout << room1.getWeapon() << endl;
+    //cout << room1.getPassage() << endl;
+    //cout << room1.getRoomName() << endl;
     
 
     return 0;
