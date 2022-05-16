@@ -50,7 +50,7 @@ int main(){
             }
             break;
 
-        case 4;
+        case 4:
             numRows = 13;
             numCols = 27;
             //char map2[13][27] = {0};
@@ -67,18 +67,22 @@ int main(){
                 }
             }
             break;
+        
+        case 5:
+        
+
 
     }
     */
     
 
-   numRows = 13;
-    numCols = 27;
-            //char map2[13][27] = {0};
+   numRows = 15;
+    numCols = 33;
+    char map2[14][33] = {0};
 
             for(int row = 0; row < numRows; row++){
                 for(int col = 0; col < numCols; col++){
-                    if ( row == 6 ||col == 26 || col == 13 || row == 0 || col == 0 || col == numCols-1 || row == numRows-1 ){
+                    if ( row == 6 ||col == 12 || row == 0 || col == 0 || col == numCols-1 || row == numRows-1 ){
                         map2[row][col] = '#';
                     } else {
                         map2[row][col] = ' ';
@@ -87,7 +91,7 @@ int main(){
 
                 }
             }
-            break;
+
  
 
 
