@@ -51,9 +51,7 @@ Game::Game(){
     for (int j = 0; j < NumRooms; j++){
         players[0]->makeAccusation();
         players[1]->makeAccusation();
-    }
-    
-    
+    }    
 }
 
 //creates a modifiable Game with interchangable characteristics
