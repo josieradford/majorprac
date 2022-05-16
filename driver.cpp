@@ -10,14 +10,13 @@
 using namespace std;
 
 int main(){
-    Game game1;
-    Game(5);
+    Game Game(5);
     /*Person player1 = Person();
     Computer player2 = Computer();
 
 
-    Room *rooms = game1.getRooms();
-    int numRooms = game1.getNumRooms();
+    Game getRooms();
+    int getNumRooms();
 
     for(int i = 0; i < numRooms; i++){
         cout << rooms[i].getRoomName() << endl;
