@@ -248,6 +248,16 @@ Game :: Game(int numRooms, int numPlayers){
         }
     }
 
+    // set difficulty level for computer players
+    cout << "The difficulty level selected will be applied to all players." << endl;
+    players[1]->setDifficulty();
+    // uncomment if we want to make specific to each computer player
+    /*for(int m = 0; m < numPlayers; m++){
+        if (players[m] != players[0]){
+            players[m]->setDifficulty();
+        }
+    }*/
+
     //create players
     ptrP = new Player[numPlayers];
     ptrP[0] = Person();
