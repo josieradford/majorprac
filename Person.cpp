@@ -97,21 +97,25 @@ void Person::makeAccusation(){
 
         //need to add some kind of check for vaild input against weapon, murderer and room names
 
-        cout << "Your accusation is:" << endl;
-        //making final accusation
-        if (finalAccusation == true){
-            cout << "It was " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
-            << currentGuessLocation << "." << endl; 
+    cout << "Your accusation is:" << endl;
+    //making final accusation
+    if (finalAccusation == true){
+        cout << endl << "It was " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
+        << currentGuessLocation << "." << endl; 
 
-        } else{ // making a guess
-            cout << "Was it " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
-            << currentGuessLocation << "?" << endl; 
-        }
+    } else{ // making a guess
+        cout << "Was it " << Accusation[1] << " " << Accusation[2] << ", with the " << currentGuessWeapon << " in the "
+        << currentGuessLocation << "?" << endl << endl; 
+    }
 
     //increase counter of how many turns the user has had
     guessCount ++;
 
     int correctCounter = checkAccusation();
+
+    //output how many were correct
+    //make this depend on a difficulty setting?
+    cout << correctCounter << " out of 3 guesses were correct" << endl << endl;
 }
 
 string Person :: getAccusation(){

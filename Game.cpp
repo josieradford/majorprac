@@ -9,6 +9,12 @@ using namespace std;
 
 //default with no input
 Game::Game(){
+    //fill arrrays
+    string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
+    
+    string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
+    
+    string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
 
     MaxNumGuesses = 4;
 
@@ -65,6 +71,13 @@ Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, 
 
 // creates a Game with randomised murder weapon, room and murderer
 Game::Game(int NumRooms){
+    //fill arrrays
+    string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
+    
+    string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
+    
+    string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+
     //setup rooms
     this->NumRooms = NumRooms;
     this->MaxNumGuesses = NumRooms;
@@ -85,9 +98,11 @@ Game::Game(int NumRooms){
     ptrP[1] = Computer();
 
     //set up murder so that each player holds info
-    string Murderer = Characters[rand() % NumRooms];
+    string Murderer = Characters[rand() % NumRooms + 1];
     string MurLocation = Rooms[rand() % NumRooms];
     string MurWeapon = Weapons[rand() % NumRooms];
+    
+    cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
     
     for (int i = 0; i < numPlayers; i++){
         ptrP[i].Murderer = Murderer;
