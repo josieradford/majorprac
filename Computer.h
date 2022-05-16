@@ -11,14 +11,11 @@ class Computer : public Player{ //protected carries over everything but private
     private:
     //records whether the current turn is a final accusation
     bool finalAccusation;
-
     //count how many guesses the player has made
     int guessCount;
     int maxGuesses;
-
     //determine difficulty level
     int difficulty;
-
     string * compLastGuess;
     
     public:

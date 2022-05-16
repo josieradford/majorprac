@@ -53,7 +53,11 @@ void Computer::makeAccusation(){
     // to set difficulty - not working im not passing it correctly
     /*if (difficulty == 1 || guessCount == 0){
         //to be filled by random input
-        string currentGuessLocation = possibleRoom[rand() % 5];
+        for (int i = 0; i < 3; i ++){
+            compLastGuess[i] = possibleRoom
+        }
+        
+        compLastGuess[] = possibleRoom[rand() % 5];
         cout << "here" << currentGuessLocation << endl;
         compLastGuess[2] = currentGuessLocation;
         cout << compLastGuess[2] << endl;

@@ -38,7 +38,7 @@ Computer.o: Computer.cpp Computer.h
 	g++ -c Computer.cpp -o Computer.o
 
 # the driver.o object file needs recompiled if driver.cpp or Person.h changes
-driver.o: driver.cpp Game.h Player.h Room.h Person.h Computer.h
+driver.o: driver.cpp Game.o Player.o Room.o Person.o Computer.o
 	g++ -c driver.cpp -o driver.o
 
 # clean removes all object files and the compiled executable
