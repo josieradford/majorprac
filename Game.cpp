@@ -40,7 +40,7 @@ Game::Game(){
 
 //creates a modifiable Game with interchangable characteristics
 Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, int MaxNumGuesses){
-        //setup rooms
+    //setup rooms
     this->NumRooms = NumRooms;
     ptrR = new Room[NumRooms];
     this->MaxNumGuesses = MaxNumGuesses;
@@ -87,6 +87,8 @@ Game::Game(int NumRooms){
         ptrP[i].MurLocation = MurLocation;
         ptrP[i].MurWeapon = MurWeapon;
     }
+
+    ptrP[0].makeAccusation();
 }
 
 //adds a room to array
