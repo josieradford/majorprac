@@ -23,6 +23,11 @@ Game::Game(){
     ptrR = new Room[NumRooms];
     fillRooms();
 
+    // sets pointer array to create players
+    array<Player *, 2> players;
+    players[0] = new Person;
+    players[1] = new Computer;
+
     //create players
     int numPlayers = 2;
     ptrP = new Player[numPlayers];
@@ -42,6 +47,12 @@ Game::Game(){
         ptrP[i].MurLocation = MurLocation;
         ptrP[i].MurWeapon = MurWeapon;
     }
+
+    for (int j = 0; j < NumRooms; j++){
+        players[0]->makeAccusation();
+        players[1]->makeAccusation();
+    }
+    
     
 }
 
