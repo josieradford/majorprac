@@ -11,6 +11,7 @@ using namespace std;
 
 int main(){
     Game Game(5);
+    
     /*Person player1 = Person();
     Computer player2 = Computer();
 

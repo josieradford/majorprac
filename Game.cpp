@@ -3,6 +3,7 @@
 #include "Person.h"
 #include "Computer.h"
 #include <string>
+#include <array>
 
 using namespace std;
 
@@ -68,6 +69,12 @@ Game::Game(int NumRooms){
     this->NumRooms = NumRooms;
     this->MaxNumGuesses = NumRooms;
     ptrR = new Room[NumRooms];
+    
+    array<Player *, 2> players;
+    players[0] = new Person;
+    players[1] = new Computer;
+
+    cout << "here "<< endl;
 
     fillRooms();
 
@@ -75,7 +82,7 @@ Game::Game(int NumRooms){
     int numPlayers = 2;
     ptrP = new Player[numPlayers];
     ptrP[0] = Person();
-    //ptrP[1] = Computer();
+    ptrP[1] = Computer();
 
     //set up murder so that each player holds info
     string Murderer = Characters[rand() % NumRooms];
@@ -88,7 +95,13 @@ Game::Game(int NumRooms){
         ptrP[i].MurWeapon = MurWeapon;
     }
 
-    ptrP[0].makeAccusation();
+    cout << NumRooms << endl;
+
+    for (int j = 0; j < NumRooms; j++){
+        players[0]->makeAccusation();
+        players[1]->makeAccusation();
+    }
+
 }
 
 //adds a room to array
