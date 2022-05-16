@@ -11,36 +11,5 @@ using namespace std;
 
 int main(){
     Game Game(5);
-    
-    /*Person player1 = Person();
-    Computer player2 = Computer();
-
-
-    Game getRooms();
-    int getNumRooms();
-
-    for(int i = 0; i < numRooms; i++){
-        cout << rooms[i].getRoomName() << endl;
-    }
-
-    player2.setDifficulty();
-
-    //player1.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-    player2.makeAccusation();
-
-    cout << (player1.getAccusation()) << " "<< player1.getLocation() << endl;
-   
-    Room room1 = Room("Knife", "Purple", false, "Garden");
-
-    cout << room1.getCharacter() << endl;
-    cout << room1.getWeapon() << endl;
-    cout << room1.getPassage() << endl;
-    cout << room1.getRoomName() << endl;
-    */
-
     return 0;
 }
