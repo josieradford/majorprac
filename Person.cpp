@@ -90,10 +90,12 @@ void Person::makeAccusation(){
     cout << "Enter your guess for the murder weapon: " << endl;
     cin >> currentGuessWeapon ;
     Accusation[0] = currentGuessWeapon;
+    cout << Accusation[0] << endl;
 
     cout << "Enter your guess for the room: " << endl;
     cin >> currentGuessLocation;
     Accusation[3] = currentGuessLocation;
+    cout << Accusation[3] << endl;
 
         //need to add some kind of check for vaild input against weapon, murderer and room names
 
@@ -111,11 +113,11 @@ void Person::makeAccusation(){
     //increase counter of how many turns the user has had
     guessCount ++;
 
-    int correctCounter = checkAccusation();
+    //int correctCounter = checkAccusation(Accusation);
 
     //output how many were correct
     //make this depend on a difficulty setting?
-    cout << correctCounter << " out of 3 guesses were correct" << endl << endl;
+    //cout << correctCounter << " out of 3 guesses were correct" << endl << endl;
 }
 
 string Person :: getAccusation(){

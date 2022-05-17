@@ -112,7 +112,7 @@ void Computer::makeAccusation(){
     //increase counter of how many turns the user has had
     guessCount ++;
 
-    int correctCounter = checkAccusation();
+    //int correctCounter = checkAccusation();
 }
 
 /*void Computer :: DifficultyLevel(int difficulty){

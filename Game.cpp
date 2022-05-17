@@ -11,9 +11,7 @@ using namespace std;
 Game::Game(){
     //fill arrrays
     string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    
     string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    
     string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
 
     MaxNumGuesses = 4;
@@ -35,6 +33,10 @@ Game::Game(){
     //ptrP[1] = Computer();
 
     //set up murder so that each player holds info
+    murdererDetails = new string[3];
+    murdererDetails[0] = Weapons[rand() % NumRooms];
+    murdererDetails[1] = Characters[rand() % NumRooms];
+    murdererDetails[2] = Rooms[rand() % NumRooms];
     murderInfo = " ";
     string Murderer = Characters[rand() % NumRooms];
     string MurLocation = Rooms[rand() % NumRooms];
@@ -286,6 +288,25 @@ Game :: Game(int numRooms, int numPlayers){
     }    
 }
 
+// getter function Current Accusation
+int Game::checkAccusation(string *Accusation, string *murdererDetails){
+    int correctCount = 0;
+
+    cout << murdererDetails[0] << " test" << endl;
+
+    if (Accusation[0] == murdererDetails[0]){
+    correctCount++;
+    }
+    if (Accusation[1]+Accusation[2] == murdererDetails[1]){
+    correctCount++;
+    }
+    if (Accusation[3] == murdererDetails[2]){
+    correctCount++;
+    } 
+
+    cout << correctCount << " out of 3 guesses were correct" << endl << endl;
+    return correctCount;
+}
 
 Room* Game::getRooms(){
     return ptrR;
@@ -300,8 +321,8 @@ int Game::getNumRooms(){
     return NumRooms;
 }
 
-string Game::getMurder(){
-    return murderInfo;
+string * Game::getMurder(){
+    return murdererDetails;
 }
 
 /*        

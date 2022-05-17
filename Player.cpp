@@ -31,21 +31,24 @@ string Player::getLocation(){
     return Location;
 }
         
-// getter function Current Accusation
-int Player::checkAccusation(){
+/*// getter function Current Accusation
+int Player::checkAccusation(string *Accusation){
     int correctCount = 0;
+    
+    cout << MurWeapon << " test" << endl;
 
-    if (currentGuessWeapon == MurWeapon){
-        correctCount++;
+    if (Accusation[0] == MurWeapon){
+    correctCount++;
     }
-    if (currentGuessMurderer == Murderer){
-        correctCount++;
+    if (Accusation[1]+Accusation[2] == Murderer){
+    correctCount++;
     }
-    if (currentGuessLocation == MurLocation){
-        correctCount++;
+    if (Accusation[3] == MurLocation){
+    correctCount++;
     } 
-     return correctCount;
-}
+    return correctCount;
+}*/
+    
 
 void Player :: setDifficulty(){
     
