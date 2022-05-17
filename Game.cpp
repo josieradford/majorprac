@@ -3,6 +3,7 @@
 #include "Person.h"
 #include "Computer.h"
 #include <string>
+#include <time.h>
 #include <array>
 
 using namespace std;
@@ -119,26 +120,38 @@ Game :: Game(int numRooms, int numPlayers){
 
 // creates a Game with randomised murder weapon, room and murderer
 Game::Game(int NumRooms){
-    //fill arrrays
-    setOptions();
+
 
     //setup rooms
     this->NumRooms = NumRooms;
     this->MaxNumGuesses = NumRooms;
     
+    
     /*
-    array<Player *, 2> players;
-    players[0] = new Person;
-    players[1] = new Computer;
-    */
-
     //set up players
     numPeople = 1;
     numComputers = 1;
+    numPlayers = numPeople + numComputers;
+    
     setPlayers();
+    */
+
+    //create players
+    // sets pointer array to create players
+    int numPlayers = 2;
+    array<Player *, 2> players;
+    players[0] = new Person;
+    players[1] = new Computer;
+
+
+
+    //ptrP[1] = Computer();
+    //array<Player *, 2> PtrP = {new Person, new Computer};
+
+
 
     //set computer difficulty
-    ptrP[1].setDifficulty();
+    players[1]->setDifficulty();
 
     fillRooms();
 
@@ -150,12 +163,17 @@ Game::Game(int NumRooms){
     
     //pass murder details to players
     for (int i = 0; i < numPlayers; i++){
-        ptrP[i].murderDetails = this->murderDetails;
+        players[i]->murderDetails = this->murderDetails;
     }
 
     //cout << NumRooms << endl;
 
     //startGame();
+
+    for (int j = 0; j < NumRooms; j++){
+        players[0]->makeAccusation();
+        players[1]->makeAccusation();
+    } 
 
 }
 
@@ -267,15 +285,15 @@ void Game::setOptions(){
     string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
     Weapons = WeaponSet;
 
-    string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+    string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
     Characters = CharacterSet;
 }
 
 // getter function Current Accusation
 int Game::checkAccusation(string *Accusation, string *murdererDetails){
     int correctCount = 0;
-
-    cout << murdererDetails[0] << " test" << endl;
+    
+    //cout << murdererDetails[0] << " test" << endl;
 
     if (Accusation[0] == murdererDetails[0]){
     correctCount++;
@@ -306,12 +324,16 @@ int Game::getNumRooms(){
 
 //setter of murder details
 void Game::setMurder(){ //uses randomiser
+    //fill arrrays
+    setOptions();
+    srand ( time(NULL) );
 
     murderDetails = new string[3];
-    murderDetails[0] = Characters[rand() % NumRooms];
-    murderDetails[1] = Rooms[rand() % NumRooms];
-    murderDetails[2] = Weapons[rand() % NumRooms];
-    
+    murderDetails[0] = Characters[rand() % NumRooms-1];
+    murderDetails[1] = Rooms[rand() % NumRooms-1];
+    murderDetails[2] = Weapons[rand() % NumRooms-1];
+
+     cout << "Murder details from setMurder: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
 }
 
 string * Game::getMurder(){
@@ -340,6 +362,8 @@ int Game::getMaxNumGuesses(){
 
 
 void Game::setPlayers(){
+    /*
+    //VERSION 1 WORKS FOR PLAYER FUNCTION
     //create player array
     ptrP = new Player[numPeople + numComputers];
 
@@ -352,13 +376,18 @@ void Game::setPlayers(){
     for (int i = numPeople; i < numComputers+numPeople; i++){
         ptrP[i] = Computer();
     }
+    */
+
+    array<Player *, 2> players;
+    players[0] = new Person;
+    players[1] = new Computer;
     
 }
 
-//CAUSES SEGMENTATION FAULT
 void Game::startGame(){ //accusations loop
     for (int i = 0; i < numPlayers; i++){
         ptrP[i].makeAccusation();
+        cout << "startGame run for: " << i << endl;
     }
 }
         
