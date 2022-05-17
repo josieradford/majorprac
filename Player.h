@@ -19,9 +19,7 @@ class Player {
         string currentGuessLocation;
 
         //murderer info
-        string Murderer;
-        string MurLocation;
-        string MurWeapon;
+        string *murderDetails;
 
     //public:
         // default constructor

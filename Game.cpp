@@ -3,57 +3,40 @@
 #include "Person.h"
 #include "Computer.h"
 #include <string>
+#include <time.h>
 #include <array>
 
 using namespace std;
 
 //default with no input
-Game::Game(){
+/*
+Game::Game(){ //has two players default
+    
     //fill arrrays
-    string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
-
+    setOptions();
+    
     MaxNumGuesses = 4;
 
     //setup rooms
     this->NumRooms = 4;
-    ptrR = new Room[NumRooms];
+    
     fillRooms();
 
-    // sets pointer array to create players
-    array<Player *, 2> players;
-    players[0] = new Person;
-    players[1] = new Computer;
-
     //create players
-    int numPlayers = 2;
-    ptrP = new Player[numPlayers];
-    ptrP[0] = Person();
-    //ptrP[1] = Computer();
+    numPeople = 1;
+    numComputers = 1;
+    numPlayers = numPeople + numComputers;
+    setPlayers();
 
     //set up murder so that each player holds info
-    murdererDetails = new string[3];
-    murdererDetails[0] = Weapons[rand() % NumRooms];
-    murdererDetails[1] = Characters[rand() % NumRooms];
-    murdererDetails[2] = Rooms[rand() % NumRooms];
-    murderInfo = " ";
-    string Murderer = Characters[rand() % NumRooms];
-    string MurLocation = Rooms[rand() % NumRooms];
-    string MurWeapon = Weapons[rand() % NumRooms];
+    setMurder();
 
-    murderInfo = Murderer + MurLocation + MurWeapon;
-
+    //copy murder details to each player
     for (int i = 0; i < numPlayers; i++){
-        ptrP[i].Murderer = Murderer;
-        ptrP[i].MurLocation = MurLocation;
-        ptrP[i].MurWeapon = MurWeapon;
+        ptrP[i].murderDetails = murderDetails;
     }
 
-    for (int j = 0; j < NumRooms; j++){
-        players[0]->makeAccusation();
-        players[1]->makeAccusation();
-    }    
+    startGame();
 }
 
 //creates a modifiable Game with interchangable characteristics
@@ -72,59 +55,132 @@ Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, 
     //ptrP[1] = Computer();
 
     //set up murder
-    for (int i = 0; i < numPlayers; i++){
-        ptrP[i].Murderer = Murderer;
-        ptrP[i].MurLocation = MurLocation;
-        ptrP[i].MurWeapon = MurWeapon;
-    }
+    murderDetails = new string[3];
+    murderDetails[0] = Murderer;
+    murderDetails[1] = MurLocation;
+    murderDetails[2] = MurWeapon;
 }
+Game :: Game(int numRooms, int numPlayers){
+    
+    //fill arrrays
+    setOptions();
 
+    MaxNumGuesses = 4;
+
+    //setup rooms
+    this->NumRooms = numRooms;
+    ptrR = new Room[NumRooms];
+    fillRooms();
+
+    // sets pointer array to create players
+    Player * players[numPlayers];
+    for(int k = 0; k < numPlayers; k++){
+        players[0] = new Person;
+        if (players[k] != players[0]){
+            players[k] = new Computer;
+        }
+    }
+
+    // set difficulty level for computer players
+    cout << "The difficulty level selected will be applied to all players." << endl;
+    players[1]->setDifficulty();
+    // uncomment if we want to make specific to each computer player
+    cout << "You've selected to have " << (numPlayers - 1) << " computer players" << endl;
+    cout << "Each difficulty level selected will be applied to the corresponding players." << endl;
+    for(int m = 0; m < numPlayers; m++){
+        if (players[m] != players[0]){
+            cout << "For player " << m << " " ;
+            players[m]->setDifficulty();
+        }
+    }
+
+    //create players
+    ptrP = new Player[numPlayers];
+    ptrP[0] = Person();
+    //ptrP[1] = Computer();
+
+    //set up murder so that pointer holds info
+    setMurder();
+
+
+    //pass murder details to each player
+    for (int i = 0; i < numPlayers; i++){
+        ptrP[i].murderDetails = this->murderDetails;
+    }
+
+    //begin make accusation loop
+    for (int j = 0; j < MaxNumGuesses; j++){
+        players[0]->makeAccusation(); //player 1 (person) make accusation
+        for(int l = 1; l < numPlayers; l++){
+            players[l]->makeAccusation(); //players 2+ (computer) make accusation
+        }
+    }    
+}
+*/
 
 // creates a Game with randomised murder weapon, room and murderer
 Game::Game(int NumRooms){
+<<<<<<< HEAD
     //fill arrrays
     string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
     string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+=======
+
+>>>>>>> 138021ac7c4be0138beb9e9b5560682593156e05
 
     //setup rooms
     this->NumRooms = NumRooms;
     this->MaxNumGuesses = NumRooms;
-    ptrR = new Room[NumRooms];
     
+    
+    /*
+    //set up players
+    numPeople = 1;
+    numComputers = 1;
+    numPlayers = numPeople + numComputers;
+    
+    setPlayers();
+    */
+
+    //create players
+    // sets pointer array to create players
+    int numPlayers = 2;
     array<Player *, 2> players;
     players[0] = new Person;
     players[1] = new Computer;
 
+
+
+    //ptrP[1] = Computer();
+    //array<Player *, 2> PtrP = {new Person, new Computer};
+
+
+
+    //set computer difficulty
     players[1]->setDifficulty();
 
     fillRooms();
 
-    //create players
-    int numPlayers = 2;
-    ptrP = new Player[numPlayers];
-    ptrP[0] = Person();
-    ptrP[1] = Computer();
 
     //set up murder so that each player holds info
-    string Murderer = Characters[rand() % NumRooms + 1];
-    string MurLocation = Rooms[rand() % NumRooms];
-    string MurWeapon = Weapons[rand() % NumRooms];
+    setMurder();
     
-    cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
+    //cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
     
+    //pass murder details to players
     for (int i = 0; i < numPlayers; i++){
-        ptrP[i].Murderer = Murderer;
-        ptrP[i].MurLocation = MurLocation;
-        ptrP[i].MurWeapon = MurWeapon;
+        players[i]->murderDetails = this->murderDetails;
     }
 
-    cout << NumRooms << endl;
+    //cout << NumRooms << endl;
+
+    //startGame();
 
     for (int j = 0; j < NumRooms; j++){
         players[0]->makeAccusation();
         players[1]->makeAccusation();
-    }
+    } 
 
 }
 
@@ -148,7 +204,9 @@ void Game::fillRooms(){
 
 
 
-     //LOGIC (BROKEN)
+     //LOGIC 
+    ptrR = new Room[NumRooms];
+
     string possibleRoomNames[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     string* usedRoomNames = new string[5];
     //string usedRoomNames[] = {};
@@ -224,73 +282,25 @@ void Game::fillRooms(){
     
 }
 
-Game :: Game(int numRooms, int numPlayers){
-     //fill arrrays
-    string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
 
-    MaxNumGuesses = 4;
 
-    //setup rooms
-    this->NumRooms = 4;
-    ptrR = new Room[NumRooms];
-    fillRooms();
+//fill arrays
+void Game::setOptions(){
+    string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
+    Rooms = RoomSet;
 
-    // sets pointer array to create players
-    Player * players[numPlayers];
-    for(int k = 0; k < numPlayers; k++){
-        players[0] = new Person;
-        if (players[k] != players[0]){
-            players[k] = new Computer;
-        }
-    }
+    string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
+    Weapons = WeaponSet;
 
-    // set difficulty level for computer players
-    cout << "The difficulty level selected will be applied to all players." << endl;
-    players[1]->setDifficulty();
-    // uncomment if we want to make specific to each computer player
-    cout << "You've selected to have " << (numPlayers - 1) << " computer players" << endl;
-    cout << "Each difficulty level selected will be applied to the corresponding players." << endl;
-    for(int m = 0; m < numPlayers; m++){
-        if (players[m] != players[0]){
-            cout << "For player " << m << " " ;
-            players[m]->setDifficulty();
-        }
-    }
-
-    //create players
-    ptrP = new Player[numPlayers];
-    ptrP[0] = Person();
-    //ptrP[1] = Computer();
-
-    //set up murder so that each player holds info
-    murderInfo = " ";
-    string Murderer = Characters[rand() % NumRooms];
-    string MurLocation = Rooms[rand() % NumRooms];
-    string MurWeapon = Weapons[rand() % NumRooms];
-
-    murderInfo = Murderer + MurLocation + MurWeapon;
-
-    for (int i = 0; i < numPlayers; i++){
-        ptrP[i].Murderer = Murderer;
-        ptrP[i].MurLocation = MurLocation;
-        ptrP[i].MurWeapon = MurWeapon;
-    }
-
-    for (int j = 0; j < MaxNumGuesses; j++){
-        players[0]->makeAccusation();
-        for(int l = 1; l < numPlayers; l++){
-            players[l]->makeAccusation();
-        }
-    }    
+    string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
+    Characters = CharacterSet;
 }
 
 // getter function Current Accusation
 int Game::checkAccusation(string *Accusation, string *murdererDetails){
     int correctCount = 0;
-
-    cout << murdererDetails[0] << " test" << endl;
+    
+    //cout << murdererDetails[0] << " test" << endl;
 
     if (Accusation[0] == murdererDetails[0]){
     correctCount++;
@@ -319,32 +329,74 @@ int Game::getNumRooms(){
     return NumRooms;
 }
 
-string * Game::getMurder(){
-    return murdererDetails;
+//setter of murder details
+void Game::setMurder(){ //uses randomiser
+    //fill arrrays
+    setOptions();
+    srand ( time(NULL) );
+
+    murderDetails = new string[3];
+    murderDetails[0] = Characters[rand() % NumRooms-1];
+    murderDetails[1] = Rooms[rand() % NumRooms-1];
+    murderDetails[2] = Weapons[rand() % NumRooms-1];
+
+     cout << "Murder details from setMurder: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
 }
 
-/*        
+string * Game::getMurder(){
+    return murderDetails;
+}
+       
 //getter Murder Weapon
 string Game::getMurWeapon(){
-    return MurWeapon;
+    return murderDetails[2];
 }
 
 //getter Murderer
 string Game::getMurderer(){
-    return Murderer;
+    return murderDetails[0];
 }
         
 //getter Murder Location
 string Game::getMurLocation(){
-    return MurLocation;
+    return murderDetails[1]; 
 }
-*/
+
 
 int Game::getMaxNumGuesses(){
     return MaxNumGuesses;
 }
 
 
+void Game::setPlayers(){
+    /*
+    //VERSION 1 WORKS FOR PLAYER FUNCTION
+    //create player array
+    ptrP = new Player[numPeople + numComputers];
+
+    //fill array with people
+    for (int i = 0; i < numPeople; i++){
+        ptrP[i] = Person();
+    }
+
+    //fill array with computers
+    for (int i = numPeople; i < numComputers+numPeople; i++){
+        ptrP[i] = Computer();
+    }
+    */
+
+    array<Player *, 2> players;
+    players[0] = new Person;
+    players[1] = new Computer;
+    
+}
+
+void Game::startGame(){ //accusations loop
+    for (int i = 0; i < numPlayers; i++){
+        ptrP[i].makeAccusation();
+        cout << "startGame run for: " << i << endl;
+    }
+}
         
 // destructor
 /*
