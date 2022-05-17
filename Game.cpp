@@ -120,14 +120,7 @@ Game :: Game(int numRooms, int numPlayers){
 
 // creates a Game with randomised murder weapon, room and murderer
 Game::Game(int NumRooms){
-<<<<<<< HEAD
-    //fill arrrays
-    string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
-=======
 
->>>>>>> 138021ac7c4be0138beb9e9b5560682593156e05
 
     //setup rooms
     this->NumRooms = NumRooms;
