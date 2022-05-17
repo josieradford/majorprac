@@ -28,6 +28,9 @@ int main(){
 
     //for (int j = 0; j < 5; j++){
         player1.makeAccusation();
+        
+        // doesnt work yet but i was trying
+        //game1.checkAccusation(player1.getAccusation(), game1.getMurder());
         player2.makeAccusation();
     //}
 

@@ -31,7 +31,7 @@ string Player::getLocation(){
     return Location;
 }
         
-// getter function Current Accusation
+/*// getter function Current Accusation
 int Player::checkAccusation(string *Accusation){
     int correctCount = 0;
     
@@ -47,7 +47,7 @@ int Player::checkAccusation(string *Accusation){
     correctCount++;
     } 
     return correctCount;
-}
+}*/
     
 
 void Player :: setDifficulty(){

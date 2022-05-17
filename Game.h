@@ -21,6 +21,7 @@ class Game {
         Room *ptrR;
         Player *ptrP;
         string murderInfo; //arbitrary for getter
+        string * murdererDetails;
 
         int MaxNumGuesses;
 
@@ -46,7 +47,7 @@ class Game {
         
 
         //getter murder info
-        string getMurder();
+        string * getMurder();
 
         /*
         // setter and getter Murder Weapon
@@ -61,7 +62,7 @@ class Game {
 
         int getMaxNumGuesses();
 
-        //int checkAccusation(string * Accusation);
+        int checkAccusation(string * Accusation, string * murdererDetails);
         
         // destructor
         //~Game();
