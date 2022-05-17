@@ -84,9 +84,7 @@ Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, 
 Game::Game(int NumRooms){
     //fill arrrays
     string Rooms[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    
     string Weapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    
     string Characters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
 
     //setup rooms
