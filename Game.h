@@ -14,29 +14,35 @@ using namespace std;
 
 class Game {
     protected:
-        string Weapons[5];
-        string Characters[5] ;
-        string Rooms[5];
+        string *Weapons;
+        string *Characters;
+        string *Rooms;
         int NumRooms; //must be 5 or less
         Room *ptrR;
         Player *ptrP;
-        string murderInfo; //arbitrary for getter
-        string * murdererDetails;
-
+        string * murderDetails; //pointer to correct accusation
+        int numPeople;
+        int numComputers;
+        int numPlayers;
         int MaxNumGuesses;
 
     public:
         // creates a default Game
         Game();
-
+    /*
         // creates a modifiable Game with interchangable characteristics
         Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, int maxNumGuesses);
 
         // creates a Game with randomised murder weapon, room and murderer
+        Game(int NumRooms, int numPlayers);
+    */
+        // creates a Game with randomised murder weapon, room and murderer
         Game(int NumRooms);
 
-        // creates a Game with randomised murder weapon, room and murderer
-        Game(int NumRooms, int numPlayers);
+
+
+        //set up arrays for charcaters, weapons and rooms
+        void setOptions();
 
         //fills rooms array
         void fillRooms();
@@ -44,12 +50,14 @@ class Game {
 
         // setter and getter Number of Rooms
         int getNumRooms();
-        
+
+        //set and get player array
+        void setPlayers();
 
         //getter murder info
+        void setMurder();
         string * getMurder();
 
-        /*
         // setter and getter Murder Weapon
         string getMurWeapon();
         
@@ -58,7 +66,8 @@ class Game {
         
         // setter and getter Murder Location
         string getMurLocation();
-        */
+        
+        void startGame(); //loops accusation
 
         int getMaxNumGuesses();
 
