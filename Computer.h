@@ -22,6 +22,7 @@ class Computer : public Player{ //protected carries over everything but private
     Computer();
     Computer(int _maxGuesses); //uses to initialise maxGuesses
     void makeAccusation(); //virtual from Player.h
+    string * getAccusation(); // virtual from Player.h
     void changeLocation(); //virtual from Player.h
 
     // determine the level of difficulty

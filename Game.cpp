@@ -138,29 +138,25 @@ Game::Game(int NumRooms){
 
     //create players
     // sets pointer array to create players
-    int numPlayers = 2;
+    numPlayers = 2;
     array<Player *, 2> players;
+    //Player * players{2};
     players[0] = new Person;
     players[1] = new Computer;
 
-
-
     //ptrP[1] = Computer();
     //array<Player *, 2> PtrP = {new Person, new Computer};
-
-
 
     //set computer difficulty
     players[1]->setDifficulty();
 
     fillRooms();
 
-
     //set up murder so that each player holds info
     setMurder();
     
     //cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
-    
+
     //pass murder details to players
     for (int i = 0; i < numPlayers; i++){
         players[i]->murderDetails = this->murderDetails;
@@ -170,11 +166,15 @@ Game::Game(int NumRooms){
 
     //startGame();
 
-    for (int j = 0; j < NumRooms; j++){
+    /*for (int j = 0; j < NumRooms; j++){
         players[0]->makeAccusation();
+        cout << "testttttttttttttt " << endl;
+        checkAccusation(players[0]->getAccusation(), getMurder());
+        cout << "testttttttttttttt " << endl;
         players[1]->makeAccusation();
-    } 
-
+        cout << "testttttttttttttt " << endl;
+        checkAccusation(players[1]->getAccusation(), getMurder());
+    }*/
 }
 
 //adds a room to array
@@ -278,7 +278,9 @@ void Game::fillRooms(){
 
 
 //fill arrays
-void Game::setOptions(){
+/*void Game::setOptions(){
+    
+    
     string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     Rooms = RoomSet;
 
@@ -287,23 +289,43 @@ void Game::setOptions(){
 
     string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
     Characters = CharacterSet;
-}
+
+    cout<<&Characters->at(0)<<endl;
+
+}*/
 
 // getter function Current Accusation
 int Game::checkAccusation(string *Accusation, string *murdererDetails){
     int correctCount = 0;
     
-    //cout << murdererDetails[0] << " test" << endl;
-
-    if (Accusation[0] == murdererDetails[0]){
-    correctCount++;
+    cout << Accusation[0]+" "+Accusation[1] << " testtttt" << murdererDetails[0] <<endl;
+    for (int i = 0; i < numPlayers; i++){
+        /*cout << players[i] << "---------------" << players[0] << endl;
+        if (players[i] == players[0]){
+            if (Accusation[2] == murdererDetails[1]){
+                cout << "helloooooo "<< endl; 
+                correctCount++;
+            }
+            if (Accusation[0]+" "+Accusation[1] == murdererDetails[0]){
+                correctCount++;
+            }
+            if (Accusation[3] == murdererDetails[2]){
+                correctCount++;
+            } 
+        }
+        else {
+            if (compLastGuess[1] == murdererDetails[1]){
+                cout << "helloooooo "<< endl; 
+                correctCount++;
+            }
+            if (compLastGuess[0] == murdererDetails[0]){
+                correctCount++;
+            }
+            if (compLastGuess[2] == murdererDetails[2]){
+                correctCount++;
+            } 
+        }*/
     }
-    if (Accusation[1]+Accusation[2] == murdererDetails[1]){
-    correctCount++;
-    }
-    if (Accusation[3] == murdererDetails[2]){
-    correctCount++;
-    } 
 
     cout << correctCount << " out of 3 guesses were correct" << endl << endl;
     return correctCount;
@@ -325,13 +347,21 @@ int Game::getNumRooms(){
 //setter of murder details
 void Game::setMurder(){ //uses randomiser
     //fill arrrays
-    setOptions();
+    //setOptions();
     srand ( time(NULL) );
 
-    murderDetails = new string[3];
-    murderDetails[0] = Characters[rand() % NumRooms-1];
-    murderDetails[1] = Rooms[rand() % NumRooms-1];
-    murderDetails[2] = Weapons[rand() % NumRooms-1];
+    string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
+    murderDetails[2] = RoomSet[rand() % 5];
+    string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
+    murderDetails[1] = WeaponSet[rand() % NumRooms];
+    string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
+    murderDetails[0] = CharacterSet[rand() % NumRooms];
+    
+    // murderDetails = new string[3];
+    // murderDetails[0] = &Characters[rand() % NumRooms];
+    // //cout << "here " << Characters[rand() % NumRooms] << endl;
+    // murderDetails[1] = &Rooms[rand() % NumRooms];
+    // murderDetails[2] = &Weapons[rand() % NumRooms];
 
      cout << "Murder details from setMurder: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
 }
@@ -342,7 +372,7 @@ string * Game::getMurder(){
        
 //getter Murder Weapon
 string Game::getMurWeapon(){
-    return murderDetails[2];
+    return murderDetails[1];
 }
 
 //getter Murderer
@@ -352,7 +382,7 @@ string Game::getMurderer(){
         
 //getter Murder Location
 string Game::getMurLocation(){
-    return murderDetails[1]; 
+    return murderDetails[2]; 
 }
 
 

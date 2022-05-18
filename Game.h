@@ -5,7 +5,7 @@
 #include "Person.h"
 #include "Computer.h"
 #include "Room.h"
-
+#include <array>
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -25,6 +25,7 @@ class Game {
         int numComputers;
         int numPlayers;
         int MaxNumGuesses;
+        array<Player *, 2> players;
 
     public:
         // creates a default Game
@@ -42,7 +43,7 @@ class Game {
 
 
         //set up arrays for charcaters, weapons and rooms
-        void setOptions();
+        // void setOptions();
 
         //fills rooms array
         void fillRooms();

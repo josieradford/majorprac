@@ -8,7 +8,7 @@
  // default constructor
 Player::Player(){
     this-> Location = "emptyLocation";
-    Accusation = new string[3];
+    Accusation = new string[4];
 
     //empty accusation array
     for (int i = 0; i < 3; i++){
@@ -23,6 +23,12 @@ void Player::makeAccusation(){
     cout << "Player::makeAccusation was run" << endl;
 }
 
+string * Player :: getAccusation(){
+    // test
+    cout << "please dont print" << endl;
+    return 0;
+}
+
 void Player::changeLocation(){
     
 }
@@ -33,7 +39,7 @@ string Player::getLocation(){
 }
         
 // getter function Current Accusation
-int Player::checkAccusation(string *Accusation){
+/*int Player::checkAccusation(string *Accusation){
 
     cout << "checkAccusation was run" << endl;
     int correctCount = 0;
@@ -52,7 +58,7 @@ int Player::checkAccusation(string *Accusation){
     correctCount++;
     } 
     return correctCount;
-}
+}*/
     
 
 void Player :: setDifficulty(){

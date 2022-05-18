@@ -20,10 +20,11 @@ class Person : public Player{ //protected carries over everything but private
     Person(int _maxGuesses); //uses to initialise maxGuesses
 
     void makeAccusation(); //virtual from Player.h
+
     void changeLocation(); //virtual from Player.h
     void setDifficulty();
 
-    string getAccusation();
+    string * getAccusation();
     //~Person();
        
        

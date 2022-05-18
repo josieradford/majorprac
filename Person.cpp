@@ -79,7 +79,7 @@ void Person::makeAccusation(){
     cout << "Enter your guess for the murderer: " << endl;
     // enter in both parts of murderer name
     
-    cin >> Accusation[0] >> Accusation[3];
+    cin >> Accusation[0] >> Accusation[1];
 
     /*cin >> Accusation[1];
     getline(cin, Accusation[1]);
@@ -89,7 +89,7 @@ void Person::makeAccusation(){
     cin >>  Accusation[2];
 
     cout << "Enter your guess for the room: " << endl;
-    cin >> Accusation[1];
+    cin >> Accusation[3];
 
 
     //need to add some kind of check for vaild input against weapon, murderer and room names
@@ -97,26 +97,26 @@ void Person::makeAccusation(){
     cout << "Your accusation is:" << endl;
     //making final accusation
     if (finalAccusation == true){
-        cout << endl << "It was " << Accusation[0] << ", with the " << Accusation[2] << " in the "
-        << Accusation[1] << "." << endl; 
+        cout << endl << "It was " << Accusation[0] << " " << Accusation[1] << ", with the " << Accusation[2] << " in the "
+        << Accusation[3] << "." << endl; 
 
     } else{ // making a guess
-        cout << "Was it " << Accusation[0] << ", with the " << Accusation[2] << " in the "
-        << Accusation[1] << "?" << endl << endl; 
+        cout << "Was it " << Accusation[0] << " " << Accusation[1] << ", with the " << Accusation[2] << " in the "
+        << Accusation[3] << "?" << endl << endl; 
     }
 
     //increase counter of how many turns the user has had
     guessCount ++;
 
-    int correctCounter = checkAccusation(Accusation);
+    // int correctCounter = checkAccusation(Accusation);
 
     //output how many were correct
     //make this depend on a difficulty setting?
-    cout << correctCounter << " out of 3 guesses were correct" << endl << endl;
+    //cout << correctCounter << " out of 3 guesses were correct" << endl << endl;
 }
 
-string Person :: getAccusation(){
-    return Accusation[4];
+string * Person :: getAccusation(){
+    return Accusation;
 }
 
 // virtual change location function

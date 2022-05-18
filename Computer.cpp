@@ -115,6 +115,10 @@ void Computer::makeAccusation(){
     //int correctCounter = checkAccusation();
 }
 
+string * Computer :: getAccusation(){
+    return compLastGuess;
+}
+
 /*void Computer :: DifficultyLevel(int difficulty){
     // to set level of memory according to difficulty
     string possibleRoom[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};

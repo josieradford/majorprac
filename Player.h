@@ -12,6 +12,7 @@ class Player {
 
         //accusation array using: 1Character, 2Weapon, 3Room
         string* Accusation;
+        string * compLastGuess;
 
         //currentGuess
         string currentGuessMurderer;
@@ -28,7 +29,8 @@ class Player {
         // virtual make accusation function
         //function does not take any parameters  bc the person will have to input manually
         virtual void makeAccusation();
-
+        virtual string * getAccusation();
+    
         // virtual change location function
         //function does not take any parameters  bc the person will have to input manually
         virtual void changeLocation();
@@ -37,7 +39,7 @@ class Player {
         string getLocation();
         
         // checker function Current Accusation
-        int checkAccusation(string *Accusation);
+        // int checkAccusation(string *Accusation);
 
         // set difficulty levels
         virtual void setDifficulty();
