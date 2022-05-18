@@ -50,14 +50,14 @@ void Computer::makeAccusation(){
         finalAccusation = true;
     }
 
-    // to set difficulty - not working im not passing it correctly
+    // to change difficulty levels
     if (difficulty == 1 || guessCount == 0){
         //to be filled by random input
         compLastGuess[2] = possibleRoom[rand() % 5];
         compLastGuess[0] = possibleCharacters[rand() % 5];
         compLastGuess[1] = possibleWeapons[rand() % 5];
     }
-    else if (difficulty == 2 && guessCount != 0){
+    else if ((difficulty == 2 && guessCount != 0) || (difficulty == 3 && guessCount != 0)){
         string possibleRoom2[4];
         string possibleWeapons2[4];
         string possibleCharacters2[4];
