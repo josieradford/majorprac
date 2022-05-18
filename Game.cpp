@@ -158,23 +158,23 @@ Game::Game(int NumRooms){
     //cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
 
     //pass murder details to players
-    for (int i = 0; i < numPlayers; i++){
-        players[i]->murderDetails = this->murderDetails;
-    }
+    //for (int i = 0; i < numPlayers; i++){
+      //  players[i]->murderDetails = this->murderDetails;
+    //}
 
     //cout << NumRooms << endl;
 
     //startGame();
 
-    /*for (int j = 0; j < NumRooms; j++){
+    for (int j = 0; j < NumRooms; j++){
         players[0]->makeAccusation();
-        cout << "testttttttttttttt " << endl;
+        //cout << "testttttttttttttt " << endl;
         checkAccusation(players[0]->getAccusation(), getMurder());
-        cout << "testttttttttttttt " << endl;
+        //cout << "-------------- line " << endl;
         players[1]->makeAccusation();
-        cout << "testttttttttttttt " << endl;
+        //cout << "here is the error " << endl;
         checkAccusation(players[1]->getAccusation(), getMurder());
-    }*/
+    }
 }
 
 //adds a room to array
@@ -298,12 +298,12 @@ void Game::fillRooms(){
 int Game::checkAccusation(string *Accusation, string *murdererDetails){
     int correctCount = 0;
     
-    cout << Accusation[0]+" "+Accusation[1] << " testtttt" << murdererDetails[0] <<endl;
-    for (int i = 0; i < numPlayers; i++){
+    //cout << Accusation[0]+" "+Accusation[1] << " testtttt" << murdererDetails[0] <<endl;
+    //for (int i = 0; i < numPlayers; i++){
         /*cout << players[i] << "---------------" << players[0] << endl;
         if (players[i] == players[0]){
-            if (Accusation[2] == murdererDetails[1]){
-                cout << "helloooooo "<< endl; 
+            */if (Accusation[2] == murdererDetails[1]){
+                //cout << "helloooooo "<< endl; 
                 correctCount++;
             }
             if (Accusation[0]+" "+Accusation[1] == murdererDetails[0]){
@@ -312,9 +312,9 @@ int Game::checkAccusation(string *Accusation, string *murdererDetails){
             if (Accusation[3] == murdererDetails[2]){
                 correctCount++;
             } 
-        }
-        else {
-            if (compLastGuess[1] == murdererDetails[1]){
+        //}
+        //else {
+            /*if (compLastGuess[1] == murdererDetails[1]){
                 cout << "helloooooo "<< endl; 
                 correctCount++;
             }
@@ -323,9 +323,9 @@ int Game::checkAccusation(string *Accusation, string *murdererDetails){
             }
             if (compLastGuess[2] == murdererDetails[2]){
                 correctCount++;
-            } 
-        }*/
-    }
+            } */
+        //}
+    //}
 
     cout << correctCount << " out of 3 guesses were correct" << endl << endl;
     return correctCount;
@@ -350,6 +350,8 @@ void Game::setMurder(){ //uses randomiser
     //setOptions();
     srand ( time(NULL) );
 
+    murderDetails = new string[3];
+
     string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     murderDetails[2] = RoomSet[rand() % 5];
     string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
@@ -357,7 +359,6 @@ void Game::setMurder(){ //uses randomiser
     string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
     murderDetails[0] = CharacterSet[rand() % NumRooms];
     
-    // murderDetails = new string[3];
     // murderDetails[0] = &Characters[rand() % NumRooms];
     // //cout << "here " << Characters[rand() % NumRooms] << endl;
     // murderDetails[1] = &Rooms[rand() % NumRooms];
