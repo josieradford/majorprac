@@ -159,7 +159,7 @@ void Computer::changeLocation(){
 // determine level of difficulty
 void Computer :: setDifficulty(){
     // prompt
-	cout << "What level of difficulty would you like?" << endl;
+	cout << "\nWhat level of difficulty would you like?" << endl;
     cout << "1. Easy" << endl << "2. Medium" << endl << "3. Hard" << endl;
 
     int loop = 0;
@@ -182,7 +182,7 @@ void Computer :: setDifficulty(){
                 loop = 3;
                 break;
             default: //if no valid input is given
-                cout << "Invalid response, please try again" << endl;
+                cout << "Invalid response, please try again " << endl;
                 break;
         }
     }

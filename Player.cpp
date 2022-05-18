@@ -60,9 +60,12 @@ string Player::getLocation(){
     return correctCount;
 }*/
     
-
+// setter and getter for difficulty
 void Player :: setDifficulty(){
     
+}
+int Player :: getDifficulty(){
+    return 0;
 }
 
 // destructor

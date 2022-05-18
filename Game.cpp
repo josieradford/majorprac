@@ -149,6 +149,7 @@ Game::Game(int NumRooms){
 
     //set computer difficulty
     players[1]->setDifficulty();
+    gameDifficulty = players[1]->getDifficulty();
 
     fillRooms();
 
@@ -173,7 +174,7 @@ Game::Game(int NumRooms){
         //cout << "-------------- line " << endl;
         players[1]->makeAccusation();
         //cout << "here is the error " << endl;
-        checkAccusationComputer(players[1]->getAccusation(), getMurder());
+        checkAccusationComputer(players[1]->getAccusation(), getMurder(), gameDifficulty);
     }
 }
 
@@ -327,26 +328,66 @@ int Game::checkAccusation(string *Accusation, string *murderDetails){
         //}
     //}
 
-    cout << correctCount << " out of 3 guesses were correct" << endl << endl;
+    cout << "You made " << correctCount << " out of 3 correct guesses" << endl << endl;
     return correctCount;
 }
 
 // checker function Current Accusation Computer
-int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails){
+int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails, int gameDifficulty){
     int correctCount = 0;
 
+    if (gameDifficulty == 1){
+        cout << "Computer got ";
+        // if loop to test output
+        if (compLastGuess[0] == murderDetails[0]){
+            cout << murderDetails[0] << " ";
+            correctCount++;
+        }
+        if (compLastGuess[1] == murderDetails[1]){
+            cout << murderDetails[1] << " ";
+            correctCount++;
+        }
+        if (compLastGuess[2] == murderDetails[2]){
+            cout << murderDetails[2] << " ";
+            correctCount++;
+        }
+        if (correctCount == 0){
+            cout << "no guesses correct" << endl;
+        }
+        else{
+            cout << "correct" << endl;
+        }
+    }
+    
     // if loop to test output
-    if (compLastGuess[1] == murderDetails[1]){
+    if (compLastGuess[0] == murderDetails[0]){
         correctCount++;
     }
-    if (compLastGuess[0] == murderDetails[0]){
+    if (compLastGuess[1] == murderDetails[1]){
         correctCount++;
     }
     if (compLastGuess[2] == murderDetails[2]){
         correctCount++;
     }
+    
+    if (gameDifficulty == 2){
+        cout << "Computer got " << correctCount << " out of 3 guesses correct" << endl;
+    }
+    else if (gameDifficulty == 3){
+        if (correctCount == 0){
+            cout << "Computer was not happy with its guess." << endl;
+        }
+        else if (correctCount == 1){
+            cout << "Computer thinks its guess was okay." << endl;
+        }
+        else if (correctCount == 2){
+            cout << "Computer thinks its guess was pretty good." << endl;
+        }
+        else if (correctCount == 3){
+            cout << "Computer thinks this was a great guess!" << endl;
+        }
+    }
 
-    cout << "Computer got " << correctCount << " out of 3 guesses were correct" << endl << endl;
     return correctCount;
 }
 

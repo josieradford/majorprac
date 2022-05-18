@@ -25,6 +25,7 @@ class Person : public Player{ //protected carries over everything but private
     void setDifficulty();
 
     string * getAccusation();
+    int getDifficulty();
     //~Person();
        
        

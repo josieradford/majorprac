@@ -25,6 +25,7 @@ class Game {
         int numComputers;
         int numPlayers;
         int MaxNumGuesses;
+        int gameDifficulty;
         array<Player *, 2> players;
 
     public:
@@ -73,7 +74,7 @@ class Game {
         int getMaxNumGuesses();
 
         int checkAccusation(string * Accusation, string * murdererDetails);
-        int checkAccusationComputer(string * compLastGuess, string * murdererDetails);
+        int checkAccusationComputer(string * compLastGuess, string * murdererDetails, int difficulty);
         
         // destructor
         //~Game();

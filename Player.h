@@ -43,6 +43,7 @@ class Player {
 
         // set difficulty levels
         virtual void setDifficulty();
+        virtual int getDifficulty();
 
         // destructor
         ~Player();

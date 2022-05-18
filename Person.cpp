@@ -47,7 +47,7 @@ void Person::makeAccusation(){
     while (validResponse == false && guessCount < max) {
         char response = ' ';
 
-        cout << "Do you want to make your final accusation? Y/N" << endl;
+        cout << "\nDo you want to make your final accusation? Y/N" << endl;
         cin >> response;
 
         switch (response){
@@ -77,6 +77,7 @@ void Person::makeAccusation(){
 
     //making accusation
     cout << "Enter your guess for the murderer: " << endl;
+    cout << "The options are: Mr Green, Ms Scarlet, Professor Plum, Colonel Mustard or Ms Peacock" << endl;
     // enter in both parts of murderer name
     
     cin >> Accusation[0] >> Accusation[1];
@@ -86,15 +87,17 @@ void Person::makeAccusation(){
     cout << "2 " << Accusation[1] << endl;*/
 
     cout << "Enter your guess for the murder weapon: " << endl;
+    cout << "The options are: Knife, Revolver, Candlestick, Rope or Pipe" << endl;
     cin >>  Accusation[2];
 
     cout << "Enter your guess for the room: " << endl;
+    cout << "The options are: Garden, Ballroom, Library, Conservatory or Kitchen" << endl;
     cin >> Accusation[3];
 
 
     //need to add some kind of check for vaild input against weapon, murderer and room names
 
-    cout << "Your accusation is:" << endl;
+    cout << "\nYour accusation is:" << endl;
     //making final accusation
     if (finalAccusation == true){
         cout << endl << "It was " << Accusation[0] << " " << Accusation[1] << ", with the " << Accusation[2] << " in the "
@@ -102,7 +105,7 @@ void Person::makeAccusation(){
 
     } else{ // making a guess
         cout << "Was it " << Accusation[0] << " " << Accusation[1] << ", with the " << Accusation[2] << " in the "
-        << Accusation[3] << "?" << endl << endl; 
+        << Accusation[3] << "?" << endl; 
     }
 
     //increase counter of how many turns the user has had
@@ -127,6 +130,9 @@ void Person::changeLocation(){
 
 void Person :: setDifficulty(){
 
+}
+int Person :: getDifficulty(){
+    return 0;
 }
 
 //Person:: ~Person(){

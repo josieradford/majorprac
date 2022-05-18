@@ -17,7 +17,7 @@ class Computer : public Player{ //protected carries over everything but private
     //determine difficulty level
     int difficulty;
     //string * compLastGuess;
-    
+    string * Accusation;
     public:
     Computer();
     Computer(int _maxGuesses); //uses to initialise maxGuesses
