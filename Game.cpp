@@ -173,7 +173,7 @@ Game::Game(int NumRooms){
         //cout << "-------------- line " << endl;
         players[1]->makeAccusation();
         //cout << "here is the error " << endl;
-        checkAccusation(players[1]->getAccusation(), getMurder());
+        checkAccusationComputer(players[1]->getAccusation(), getMurder());
     }
 }
 
@@ -295,33 +295,33 @@ void Game::fillRooms(){
 }*/
 
 // getter function Current Accusation
-int Game::checkAccusation(string *Accusation, string *murdererDetails){
+int Game::checkAccusation(string *Accusation, string *murderDetails){
     int correctCount = 0;
     
-    //cout << Accusation[0]+" "+Accusation[1] << " testtttt" << murdererDetails[0] <<endl;
+    //cout << Accusation[0]+" "+Accusation[1] << " testtttt" << murderDetails[0] <<endl;
     //for (int i = 0; i < numPlayers; i++){
         /*cout << players[i] << "---------------" << players[0] << endl;
         if (players[i] == players[0]){
-            */if (Accusation[2] == murdererDetails[1]){
+            */if (Accusation[2] == murderDetails[1]){
                 //cout << "helloooooo "<< endl; 
                 correctCount++;
             }
-            if (Accusation[0]+" "+Accusation[1] == murdererDetails[0]){
+            if (Accusation[0]+" "+Accusation[1] == murderDetails[0]){
                 correctCount++;
             }
-            if (Accusation[3] == murdererDetails[2]){
+            if (Accusation[3] == murderDetails[2]){
                 correctCount++;
             } 
         //}
         //else {
-            /*if (compLastGuess[1] == murdererDetails[1]){
+            /*if (compLastGuess[1] == murderDetails[1]){
                 cout << "helloooooo "<< endl; 
                 correctCount++;
             }
-            if (compLastGuess[0] == murdererDetails[0]){
+            if (compLastGuess[0] == murderDetails[0]){
                 correctCount++;
             }
-            if (compLastGuess[2] == murdererDetails[2]){
+            if (compLastGuess[2] == murderDetails[2]){
                 correctCount++;
             } */
         //}
@@ -331,6 +331,26 @@ int Game::checkAccusation(string *Accusation, string *murdererDetails){
     return correctCount;
 }
 
+// checker function Current Accusation Computer
+int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails){
+    int correctCount = 0;
+
+    // if loop to test output
+    if (compLastGuess[1] == murderDetails[1]){
+        correctCount++;
+    }
+    if (compLastGuess[0] == murderDetails[0]){
+        correctCount++;
+    }
+    if (compLastGuess[2] == murderDetails[2]){
+        correctCount++;
+    }
+
+    cout << "Computer got " << correctCount << " out of 3 guesses were correct" << endl << endl;
+    return correctCount;
+}
+
+// return rooms
 Room* Game::getRooms(){
     return ptrR;
 
@@ -339,7 +359,6 @@ Room* Game::getRooms(){
 
 
 //getter Number of Rooms
-
 int Game::getNumRooms(){
     return NumRooms;
 }
@@ -353,7 +372,7 @@ void Game::setMurder(){ //uses randomiser
     murderDetails = new string[3];
 
     string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    murderDetails[2] = RoomSet[rand() % 5];
+    murderDetails[2] = RoomSet[rand() % NumRooms];
     string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
     murderDetails[1] = WeaponSet[rand() % NumRooms];
     string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};

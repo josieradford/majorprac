@@ -73,6 +73,7 @@ class Game {
         int getMaxNumGuesses();
 
         int checkAccusation(string * Accusation, string * murdererDetails);
+        int checkAccusationComputer(string * compLastGuess, string * murdererDetails);
         
         // destructor
         //~Game();
