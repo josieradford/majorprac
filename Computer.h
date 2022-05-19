@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <fstream>
 using namespace std;
 
 class Computer : public Player{ //protected carries over everything but private
@@ -18,6 +19,11 @@ class Computer : public Player{ //protected carries over everything but private
     int difficulty;
     //string * compLastGuess;
     string * Accusation;
+
+    fstream file0;
+    fstream file1;
+    fstream file2;
+
     public:
     Computer();
     Computer(int _maxGuesses); //uses to initialise maxGuesses

@@ -27,7 +27,9 @@ class Game {
         int numPlayers;
         int MaxNumGuesses;
         int gameDifficulty;
-        fstream file;
+        fstream file0;
+        fstream file1;
+        fstream file2;
         array<Player *, 2> players;
 
     public:

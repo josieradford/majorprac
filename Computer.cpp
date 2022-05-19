@@ -58,7 +58,7 @@ void Computer::makeAccusation(){
         compLastGuess[0] = possibleCharacters[rand() % 5];
         compLastGuess[1] = possibleWeapons[rand() % 5];
     }
-    else if ((difficulty == 2 && guessCount != 0) || (difficulty == 3 && guessCount != 0)){
+    else if (difficulty == 2 && guessCount != 0){
         string possibleRoom2[4];
         string possibleWeapons2[4];
         string possibleCharacters2[4];
@@ -88,6 +88,136 @@ void Computer::makeAccusation(){
         compLastGuess[2] = possibleRoom2[rand() % 4];
         compLastGuess[0] = possibleCharacters2[rand() % 4];
         compLastGuess[1] = possibleWeapons2[rand() % 4];
+    }
+    else if (difficulty == 3 && guessCount != 0){
+        // run test to check file0 contents against arrays
+        // sets counter to set size of possibleCharacters3
+        int tracker0 = 0;
+        // opens file0
+        file0.open("ComputerMemoryPerson.txt", ios :: in);
+        // checks if file0 is open
+        if (file0.is_open()){
+            string line;
+            // while loop to sort through each line in file0
+            while (getline(file0, line)){
+                // get how many guess options have been used
+                for (int i = 0; i < 5; i++){
+                    if (line == possibleCharacters[i]){
+                        tracker0++;
+                    }
+                }
+            }
+            // close file0
+            file0.close();
+        }
+        // set string array for possible characters
+        string possibleCharacters3[tracker0];
+        // opens file0
+        file0.open("ComputerMemoryPerson.txt", ios :: in);
+        // checks if file0 is open
+        if (file0.is_open()){
+            string line;
+            // while loop to sort through each line in file
+            while (getline(file0, line)){
+                // for loop adding each unused guess into possibleCharacters3
+                for (int l = 0; l < 5; l++){
+                    for (int j = 0; j < tracker0; j++){
+                        if (line != possibleCharacters[l]){
+                            possibleCharacters3[j] = possibleCharacters[l]; 
+                        }
+                    }
+                }
+            }
+            // close file0
+            file0.close();
+        }
+        // run test to check file1 contents against arrays
+        // sets counter to set size of possibleWeapons3
+        int tracker1 = 0;
+        // opens file1
+        file1.open("ComputerMemoryWeapon.txt", ios :: in);
+        // checks if file1 is open
+        if (file1.is_open()){
+            string line;
+            // while loop to sort through each line in file2
+            while (getline(file1, line)){
+                // get how many guess options have been used
+                for (int i = 0; i < 5; i++){
+                    if (line == possibleWeapons[i]){
+                        tracker1++;
+                    }
+                }
+            }
+            // close file1
+            file1.close();
+        }
+        // set string array for possible weapons
+        string possibleWeapons3[tracker1];
+        // opens file1
+        file1.open("ComputerMemoryWeapon.txt", ios :: in);
+        // checks if file1 is open
+        if (file1.is_open()){
+            string line;
+            // while loop to sort through each line in file
+            while (getline(file1, line)){
+                // for loop adding each unused guess into possibleWeapons3
+                for (int l = 0; l < 5; l++){
+                    for (int j = 0; j < tracker1; j++){
+                        if (line != possibleWeapons[l]){
+                            possibleWeapons3[j] = possibleWeapons[l]; 
+                        }
+                    }
+                }
+            }
+            // close file1
+            file1.close();
+        }
+        // run test to check file2 contents against arrays
+        // sets counter to set size of possibleRoom3
+        int tracker2 = 0;
+        // opens file2
+        file2.open("ComputerMemoryRoom.txt", ios :: in);
+        // checks if file2 is open
+        if (file2.is_open()){
+            string line;
+            // while loop to sort through each line in file2
+            while (getline(file2, line)){
+                // get how many guess options have been used
+                for (int i = 0; i < 5; i++){
+                    if (line == possibleRoom[i]){
+                        tracker2++;
+                    }
+                }
+            }
+            // close file2
+            file2.close();
+        }
+        // set string array for possible rooms
+        string possibleRoom3[tracker2];
+        // opens file2
+        file2.open("ComputerMemoryRoom.txt", ios :: in);
+        // checks if file2 is open
+        if (file2.is_open()){
+            string line;
+            // while loop to sort through each line in file
+            while (getline(file2, line)){
+                // for loop adding each unused guess into possibleRoom3
+                for (int l = 0; l < 5; l++){
+                    for (int j = 0; j < tracker2; j++){
+                        if (line != possibleRoom[l]){
+                            possibleRoom3[j] = possibleRoom[l]; 
+                        }
+                    }
+                }
+            }
+            // close file2
+            file2.close();
+        }
+
+        // fill with randomised input
+        compLastGuess[0] = possibleCharacters3[rand() % tracker0];
+        compLastGuess[1] = possibleWeapons3[rand() % tracker1];
+        compLastGuess[2] = possibleRoom3[rand() % tracker2];
     }
 
     /*//to be filled by random input NOt RANDOMISING RN

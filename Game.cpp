@@ -380,10 +380,10 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
         }
 		// enter the guess into text file if its incorrect
         else if (compLastGuess[0] != murderDetails[0]){
-            file.open("ComputerMemory.txt", ios :: app);
-			file << compLastGuess[0] << endl;
-			file.close();
-			cout << "entered in file" << endl;
+            file0.open("ComputerMemoryPerson.txt", ios :: app);
+			file0 << compLastGuess[0] << endl;
+			file0.close();
+			cout << "entered in file 0" << endl;
         }
 		// if loop to test output
         if (compLastGuess[1] == murderDetails[1]){
@@ -391,10 +391,10 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
         }
 		// enter the guess into text file if its incorrect
 		else if(compLastGuess[1] != murderDetails[1]){
-			file.open("ComputerMemory.txt", ios :: app);
-			file << compLastGuess[1] << endl;
-			file.close();
-			cout << "entered in file" << endl;
+			file1.open("ComputerMemoryWeapon.txt", ios :: app);
+			file1 << compLastGuess[1] << endl;
+			file1.close();
+			cout << "entered in file 1" << endl;
 		}
 		// if loop to test output
         if (compLastGuess[2] == murderDetails[2]){
@@ -402,10 +402,10 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
         }
 		// enter the guess into text file if its incorrect
 		else if(compLastGuess[2] != murderDetails[2]){
-			file.open("ComputerMemory.txt", ios :: app);
-			file << compLastGuess[2] << endl;
-			file.close();
-			cout << "entered in file" << endl;
+			file2.open("ComputerMemoryRoom.txt", ios :: app);
+			file2 << compLastGuess[2] << endl;
+			file2.close();
+			cout << "entered in file 2" << endl;
 		}
 		// output to show computers reaction
         if (correctCount == 0){
