@@ -5,6 +5,7 @@
 #include <string>
 #include <time.h>
 #include <array>
+#include <fstream>
 
 using namespace std;
 
@@ -187,7 +188,7 @@ void Game::fillRooms(){
     
     string possibleRoomWeapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
     
-    string possibleRoomCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+    string possibleRoomCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
     
     for (int i = 0; i < NumRooms; i++){
         ptr[i].setRoomName(possibleRoomNames[rand() % 5]);
@@ -207,7 +208,7 @@ void Game::fillRooms(){
     string possibleRoomWeapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
     string* usedRoomWeapons = new string[5];
     //string usedRoomWeapons[] = {};
-    string possibleRoomCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+    string possibleRoomCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
     string* usedRoomCharacters = new string[5];
     //string usedRoomCharacters[] = {};
 
@@ -359,21 +360,54 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
         }
     }
     
-    // if loop to test output
-    if (compLastGuess[0] == murderDetails[0]){
-        correctCount++;
-    }
-    if (compLastGuess[1] == murderDetails[1]){
-        correctCount++;
-    }
-    if (compLastGuess[2] == murderDetails[2]){
-        correctCount++;
-    }
-    
     if (gameDifficulty == 2){
+        // if loop to test output
+        if (compLastGuess[0] == murderDetails[0]){
+            correctCount++;
+        }
+        if (compLastGuess[1] == murderDetails[1]){
+            correctCount++;
+        }
+        if (compLastGuess[2] == murderDetails[2]){
+            correctCount++;
+        }
         cout << "Computer got " << correctCount << " out of 3 guesses correct" << endl;
     }
     else if (gameDifficulty == 3){
+        // if loop to test output
+        if (compLastGuess[0] == murderDetails[0]){
+            correctCount++;
+        }
+		// enter the guess into text file if its incorrect
+        else if (compLastGuess[0] != murderDetails[0]){
+            file.open("ComputerMemory.txt", ios :: app);
+			file << compLastGuess[0] << endl;
+			file.close();
+			cout << "entered in file" << endl;
+        }
+		// if loop to test output
+        if (compLastGuess[1] == murderDetails[1]){
+            correctCount++;
+        }
+		// enter the guess into text file if its incorrect
+		else if(compLastGuess[1] != murderDetails[1]){
+			file.open("ComputerMemory.txt", ios :: app);
+			file << compLastGuess[1] << endl;
+			file.close();
+			cout << "entered in file" << endl;
+		}
+		// if loop to test output
+        if (compLastGuess[2] == murderDetails[2]){
+            correctCount++;
+        }
+		// enter the guess into text file if its incorrect
+		else if(compLastGuess[2] != murderDetails[2]){
+			file.open("ComputerMemory.txt", ios :: app);
+			file << compLastGuess[2] << endl;
+			file.close();
+			cout << "entered in file" << endl;
+		}
+		// output to show computers reaction
         if (correctCount == 0){
             cout << "Computer was not happy with its guess." << endl;
         }

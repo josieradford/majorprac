@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <fstream>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ class Game {
         int numPlayers;
         int MaxNumGuesses;
         int gameDifficulty;
+        fstream file;
         array<Player *, 2> players;
 
     public:

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <fstream>
 #include "Computer.h"
 
 using namespace std;
@@ -44,7 +45,7 @@ void Computer::makeAccusation(){
     // options for accusation
     string possibleRoom[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     string possibleWeapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    string possibleCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+    string possibleCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
 
     if (maxGuesses == guessCount){
         finalAccusation = true;
@@ -123,7 +124,7 @@ string * Computer :: getAccusation(){
     // to set level of memory according to difficulty
     string possibleRoom[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
     string possibleWeapons[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    string possibleCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Coronel Mustard", "Ms Peacock"};
+    string possibleCharacters[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
 
     if (difficulty == 1){
         //to be filled by random input
