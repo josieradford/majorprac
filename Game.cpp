@@ -6,6 +6,7 @@
 #include <time.h>
 #include <array>
 #include <fstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -387,24 +388,43 @@ void Game::setMap(){
 
     for(int row = 0; row < numRows; row++){
         for(int col = 0; col < numCols; col++){
-            //ptrM[row][col] = 1;
             //external frame
-
-            
             if (row == 0 || col == 0 || col == numCols-1 || row == numRows-1 ){
-                ptrM[row][col] = '#';
+                ptrM[row][col] = '*';
             //internal frame
             }  else if ((row == 5 || row == 10) && (col >= 11 && col <= 22)){
-                ptrM[row][col] = '#';
+                ptrM[row][col] = '*';
             }else if ((col == 11 || col == 22) && (row >= 5 && row <= 10)){
-                ptrM[row][col] = '#';
+                ptrM[row][col] = '*';
             }else if ((col == 17) && (row <= 5 || row >= 10)){
-                ptrM[row][col] = '#';
+                ptrM[row][col] = '*';
             }else if ((row == 8) && (col <= 11 || col >= 22)){
-                ptrM[row][col] = '#';
-            }else{
+                ptrM[row][col] = '*';
+            //room numbering
+            } else if (row == 2 && col == 3){
+                ptrM[row][col] = '1';
+            }else if (row == 2 && col == 30){
+                ptrM[row][col] = '2';
+            }else if (row == 7 && col == 16){
+                ptrM[row][col] = '3';
+            }else if (row == 13 && col == 3){
+                ptrM[row][col] = '4';
+            }else if (row == 13 && col == 30){
+                ptrM[row][col] = '5';
+            }
+            else{
                 ptrM[row][col] = ' ';
-            } 
+            }            
+            //doors
+            ptrM[3][17] = '|';
+            ptrM[8][5] = '_';
+            ptrM[8][27] = '_';
+            ptrM[13][17] = '|';
+            ptrM[5][13] = '_';
+            ptrM[10][13] = '_';
+            ptrM[5][20] = '_';
+            ptrM[10][20] = '_';
+            
         }
     }
     
@@ -416,13 +436,23 @@ void Game::printMap(){
     int numCols = 34;
 
     //print map
+    cout << endl << "GAME MAP" << endl;
     for(int row = 0; row < numRows; row++){
         for(int col = 0; col < numCols; col++){
             cout << (ptrM[row][col]);
-            //cout<< *(*ptrM + row) + col;
         }
         cout << endl;
     }
+
+    //print map legend
+    cout << "1: Conservatory" << endl
+    << "2: Ballroom" << endl
+    << "3: Garden" << endl
+    << "4: Library" << endl
+    << "5: Kitchen" << endl
+    << "_ : doors" << endl
+    << "* : walls" << endl;
+
 }
 
 //getter Number of Rooms
@@ -438,19 +468,12 @@ void Game::setMurder(){ //uses randomiser
 
     murderDetails = new string[3];
 
-    //string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
-    murderDetails[2] = Rooms[rand() % NumRooms];
-    //string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"};
-    murderDetails[1] = Weapons[rand() % NumRooms];
-    //string CharacterSet[5] = {"Mr Green", "Ms Scarlet", "Professor Plum", "Colonel Mustard", "Ms Peacock"};
-    murderDetails[0] = Characters[rand() % NumRooms];
     
-    // murderDetails[0] = &Characters[rand() % NumRooms];
-    // //cout << "here " << Characters[rand() % NumRooms] << endl;
-    // murderDetails[1] = &Rooms[rand() % NumRooms];
-    // murderDetails[2] = &Weapons[rand() % NumRooms];
+    murderDetails[2] = Rooms[rand() % NumRooms];
+    murderDetails[1] = Weapons[rand() % NumRooms];
+    murderDetails[0] = Characters[rand() % NumRooms];
 
-     cout << "Murder details from setMurder: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
+    //cout << "Murder details from setMurder: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
 }
 
 string * Game::getMurder(){

@@ -122,6 +122,10 @@ string * Person :: getAccusation(){
 // virtual change location function
 void Person::changeLocation(){
     cout << "Allow for location change" << endl;
+    cout << "You are currently in " << Location << endl;
+
+    //if Location 
+
 
 }
 
