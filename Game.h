@@ -21,6 +21,7 @@ class Game {
         int NumRooms; //must be 5 or less
         Room *ptrR;
         Player *ptrP;
+        char (*ptrM)[33]; //pointer to map array
         string * murderDetails; //pointer to correct accusation
         int numPeople;
         int numComputers;
@@ -47,8 +48,8 @@ class Game {
 
 
 
-        //set up arrays for charcaters, weapons and rooms
-        // void setOptions();
+        //set up arrays for characters, weapons and rooms
+        void fillArrays();
 
         //fills rooms array
         void fillRooms();
@@ -73,6 +74,9 @@ class Game {
         // setter and getter Murder Location
         string getMurLocation();
         
+        void setMap();
+        void printMap();
+
         void startGame(); //loops accusation
 
         int getMaxNumGuesses();

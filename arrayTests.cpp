@@ -5,13 +5,14 @@ using namespace std;
 //TRYING TO CODE A MAP GRAPHIC
 
 int main(){
-    int numRooms = 0;
+    int numRooms = 1;
     int numRows = 0;
     int numCols = 0;
     char *map;
     
+  
     cin >> numRooms;
-    
+  
     switch (numRooms){
         case 1:
             //char map[7][14] = {0};
@@ -24,7 +25,7 @@ int main(){
                     if (row == 0 || col == 0 || col == numCols-1 || row == numRows-1 ){
                         map[row+col] = '#';
                     } else {
-                        map[row+col] = ' ';
+                        map[row+col] = '%';
                     }
                 }
             }
@@ -92,7 +93,8 @@ int main(){
 
     }
 
-    
+ 
+
     /*
    numRows = 15;
     numCols = 33;
@@ -123,7 +125,7 @@ int main(){
     //print map
     for(int row = 0; row < numRows; row++){
         for(int col = 0; col < numCols; col++){
-            cout << map[row+col];
+            cout << map[row][col];
         }
         cout << endl;
     }

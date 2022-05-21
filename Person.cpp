@@ -40,9 +40,6 @@ void Person::makeAccusation(){
     string response;
     int max = maxGuesses;
 
-    //test
-    //cout << "Murder details: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
-
     //determine whether making final accusation or not
     while (validResponse == false && guessCount < max) {
         char response = ' ';
@@ -125,6 +122,10 @@ string * Person :: getAccusation(){
 // virtual change location function
 void Person::changeLocation(){
     cout << "Allow for location change" << endl;
+    cout << "You are currently in " << Location << endl;
+
+    //if Location 
+
 
 }
 
