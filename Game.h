@@ -30,7 +30,7 @@ class Game {
         fstream file0;
         fstream file1;
         fstream file2;
-        array<Player *, 2> players;
+        //array<Player *, 2> players;
 
     public:
         // creates a default Game
