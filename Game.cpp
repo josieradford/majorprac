@@ -135,8 +135,13 @@ Game::Game(int NumRooms){
     //create players
     // sets pointer array to create players
     numPlayers = 2;
+<<<<<<< HEAD
+    // array<Player *, 2> players;
+    Player * players[2];
+=======
     array<Player *, 2> players;
 
+>>>>>>> e20ab3c7619094bd87b6461dc0120fa75f0ba127
     players[0] = new Person;
     players[1] = new Computer;
 
