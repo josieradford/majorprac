@@ -149,25 +149,14 @@ Game::Game(int NumRooms){
 
     //set up murder so that each player holds info
     setMurder();
-    
-    //cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
-
-    //pass murder details to players
-    //for (int i = 0; i < numPlayers; i++){
-      //  players[i]->murderDetails = this->murderDetails;
-    //}
-
-    //cout << NumRooms << endl;
-
-    //startGame();
 
     for (int j = 0; j < NumRooms; j++){
+        //person
         players[0]->makeAccusation();
-        //cout << "testttttttttttttt " << endl;
         checkAccusation(players[0]->getAccusation(), getMurder());
-        //cout << "-------------- line " << endl;
+
+        //computer
         players[1]->makeAccusation();
-        //cout << "here is the error " << endl;
         checkAccusationComputer(players[1]->getAccusation(), getMurder(), gameDifficulty);
     }
 }
