@@ -125,23 +125,17 @@ Game::Game(int NumRooms){
     fillArrays();
     setMap();
     printMap();
-
+	gameEND = false;
 
     //setup rooms
     this->NumRooms = NumRooms;
     this->MaxNumGuesses = NumRooms;
-    
 
     //create players
     // sets pointer array to create players
     numPlayers = 2;
-<<<<<<< HEAD
-    // array<Player *, 2> players;
-    Player * players[2];
-=======
     array<Player *, 2> players;
 
->>>>>>> e20ab3c7619094bd87b6461dc0120fa75f0ba127
     players[0] = new Person;
     players[1] = new Computer;
 
@@ -154,16 +148,33 @@ Game::Game(int NumRooms){
 
     //set up murder so that each player holds info
     setMurder();
+    
+	//cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
 
     for (int j = 0; j < NumRooms; j++){
-        //person
-        players[0]->makeAccusation();
-        checkAccusation(players[0]->getAccusation(), getMurder());
-
-        //computer
-        players[1]->makeAccusation();
-        checkAccusationComputer(players[1]->getAccusation(), getMurder(), gameDifficulty);
+        if (gameEND == false){
+			// person player
+			players[0]->makeAccusation();
+        	checkAccusation(players[0]->getAccusation(), getMurder());
+		}
+		if (gameEND == false){
+			// computer player
+        	players[1]->makeAccusation();
+        	checkAccusationComputer(players[1]->getAccusation(), getMurder(), gameDifficulty);
+		}
+		else {
+			gameENDMessage();
+			break;
+		}
     }
+
+	cout << "\nThanks for playing ! \nThats the end." << endl;
+
+	if (gameDifficulty == 3){
+		remove("ComputerMemoryPerson.txt");
+		remove("ComputerMemoryWeapon.txt");
+		remove("ComputerMemoryRoom.txt");
+	}
 }
 
 //adds a room to array
@@ -276,6 +287,13 @@ int Game::checkAccusation(string *Accusation, string *murderDetails){
     } 
 
     cout << "You made " << correctCount << " out of 3 correct guesses" << endl << endl;
+
+	// trigger the end of game if the correct guess was made
+	if (correctCount == 3){
+		gameEND = true;
+		personWin = true;
+	}
+
     return correctCount;
 }
 
@@ -365,6 +383,11 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
             cout << "Computer thinks this was a great guess!" << endl;
         }
     }
+
+	// trigger the end of game if the correct guess was made
+	if (correctCount == 3){
+		gameEND = true;
+	}
 
     return correctCount;
 }
@@ -523,6 +546,15 @@ void Game::startGame(){ //accusations loop
         ptrP[i].makeAccusation();
         cout << "startGame run for: " << i << endl;
     }
+}
+
+void Game :: gameENDMessage(){
+	if (personWin == true){
+		cout << "You have made the correct guess! \nThe murderer has now been found and you have won!" << endl;
+	}
+	else if (personWin == false){
+		cout << "Computer has made the correct guess! \nThe murderer has now been found, however, you have lost" << endl;
+	}
 }
         
 // destructor

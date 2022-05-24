@@ -20,6 +20,8 @@ class Computer : public Player{ //protected carries over everything but private
     //string * compLastGuess;
     string * Accusation;
 
+    bool cbool0, cbool1, cbool2, cbool3, cbool4;
+
     fstream file0;
     fstream file1;
     fstream file2;

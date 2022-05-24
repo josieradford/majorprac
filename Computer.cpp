@@ -90,15 +90,16 @@ void Computer::makeAccusation(){
         compLastGuess[1] = possibleWeapons2[rand() % 4];
     }
     else if (difficulty == 3 && guessCount != 0){
-        // run test to check file0 contents against arrays
-        // sets counter to set size of possibleCharacters3
+		// run test to check file1 contents against arrays
+        // sets counter to set size of possibleWeapons3
         int trackerwrong0 = 5;
-        // opens file0
+		bool cbool0 = false, cbool1 = false, cbool2 = false, cbool3 = false, cbool4 = false;
+        // opens file1
         file0.open("ComputerMemoryPerson.txt", ios :: in);
-        // checks if file0 is open
+        // checks if file1 is open
         if (file0.is_open()){
             string line;
-            // while loop to sort through each line in file0
+            // while loop to sort through each line in file2
             while (getline(file0, line)){
                 // get how many guess options have been used
                 for (int i = 0; i < 5; i++){
@@ -108,54 +109,75 @@ void Computer::makeAccusation(){
                     }
                 }
             }
-            // close file0
+            // close file1
             file0.close();
         }
 		cout << trackerwrong0 << endl;
-        // set string array for possible characters
-        string possibleCharacters3[trackerwrong0];
-        // opens file0
-        file0.open("ComputerMemoryPerson.txt", ios :: in);
+        // set string array for possible weapons
+		string possibleCharacters3[trackerwrong0];
+		string incorrectGuesses0[5 - trackerwrong0];
+		// opens file0
+		file0.open("ComputerMemoryPerson.txt", ios :: in);
         // checks if file0 is open
         if (file0.is_open()){
             string line;
             // while loop to sort through each line in file
-            while (getline(file0, line)){
-                // for loop adding each unused guess into possibleCharacters3
-                for (int l = 0; l < trackerwrong0; l++){
-                    /*for (int j = 0; j < trackerwrong0; j++){
-                        if (line != possibleCharacters[l] && trackerwrong0 != 5){
-                            possibleCharacters3[j] = possibleCharacters[l];
-							cout  << line << " --------- " << possibleCharacters3[j] << endl;
-                            //cout << possibleCharacters3[j] << endl;
-							break;
-                        }
-						else if (trackerwrong0 == 5){
-							possibleCharacters3[j] = possibleCharacters[l];
-							cout  << line << " --------- " << possibleCharacters3[j] << endl;
-							break;
-						}
-                    }*/
-					if (line == possibleCharacters[l]){
-						string dummy = line;
-						if (dummy != possibleCharacters[l]){
-							possibleCharacters3[l] = possibleCharacters[l];
-						}
-					}
-                }
-            }
+			for (int p = 0; p < (5 - trackerwrong0); p++){
+				getline(file0, line);
+				if (line != ""){
+					incorrectGuesses0[p] = line;
+				}
+				cout << incorrectGuesses0[p] << " incorrect guess character " << endl;
+			}
             // close file0
             file0.close();
         }
-        // run test to check file1 contents against arrays
+
+		if (trackerwrong0 != 5){
+			cout << trackerwrong0 << "tracker";
+			for (int i = 0; i < (5 - trackerwrong0); i++){
+			int j = 0;
+
+			cout << incorrectGuesses0[i];
+
+			if (possibleCharacters[0] != incorrectGuesses0[i] && cbool0 == false){
+				possibleCharacters3[j] = possibleCharacters[0];
+				j++;
+			} else {cbool0 = true;}
+			if (possibleCharacters[1] != incorrectGuesses0[i] && cbool1 == false){
+				possibleCharacters3[j] = possibleCharacters[1];
+				j++;
+			} else {cbool1 = true;}
+			if (possibleCharacters[2] != incorrectGuesses0[i] && cbool2 == false){
+				possibleCharacters3[j] = possibleCharacters[2];
+				j++;
+			} else {cbool2 = true;}
+			if (possibleCharacters[3] != incorrectGuesses0[i] && cbool3 == false){
+				possibleCharacters3[j] = possibleCharacters[3];
+				j++;
+			} else {cbool3 = true;}
+			if (possibleCharacters[4] != incorrectGuesses0[i] && cbool4 == false){
+				possibleCharacters3[j] = possibleCharacters[4];
+				j++;
+			} else {cbool4 = true;}
+			}
+
+		} else if (trackerwrong0 == 5){
+			for (int k = 0; k < 5; k++){
+				possibleCharacters3[k] = possibleCharacters[k];
+			}
+		}
+
+		// run test to check file1 contents against arrays
         // sets counter to set size of possibleWeapons3
         int trackerwrong1 = 5;
+		bool wbool0 = false, wbool1 = false, wbool2 = false, wbool3 = false, wbool4 = false;
         // opens file1
         file1.open("ComputerMemoryWeapon.txt", ios :: in);
         // checks if file1 is open
         if (file1.is_open()){
             string line;
-            // while loop to sort through each line in file2
+            // while loop to sort through each line in file1
             while (getline(file1, line)){
                 // get how many guess options have been used
                 for (int i = 0; i < 5; i++){
@@ -168,39 +190,62 @@ void Computer::makeAccusation(){
             // close file1
             file1.close();
         }
-		cout << trackerwrong1 << endl;
         // set string array for possible weapons
-        string possibleWeapons3[trackerwrong1];
-        // opens file1
-        file1.open("ComputerMemoryWeapon.txt", ios :: in);
+		string possibleWeapons3[trackerwrong1];
+		string incorrectGuesses1[5 - trackerwrong1];
+		// opens file1
+		file1.open("ComputerMemoryWeapon.txt", ios :: in);
         // checks if file1 is open
         if (file1.is_open()){
-            string line;
+            cout << "opened " << endl;
+			string line;
             // while loop to sort through each line in file
-            while (getline(file1, line)){
-                // for loop adding each unused guess into possibleWeapons3
-                for (int l = 0; l < 5; l++){
-                    for (int j = 0; j < trackerwrong1; j++){
-                        if (line != possibleWeapons[l] && trackerwrong1 != 5){
-							possibleWeapons3[j] = possibleWeapons[l];
-							cout  << line << " --------- " << possibleWeapons3[j] << endl;
-                            //cout << possibleWeapons3[j] << endl;
-							break;
-                        }
-						else if (trackerwrong1 == 5){
-                            possibleWeapons3[j] = possibleWeapons[l];
-							cout  << line << " --------- " << possibleWeapons3[j] << endl;
-						break;
-						}
-                    }
-                }
-            }
+			for (int p = 0; p < (5 - trackerwrong1); p++){
+				getline(file1, line);
+				if (line != ""){
+					incorrectGuesses1[p] = line;
+				}
+				cout << incorrectGuesses1[p] << " incorrect guess weapons " << endl;
+			}
             // close file1
             file1.close();
         }
-        // run test to check file2 contents against arrays
+
+		if (trackerwrong1 != 5){
+			for (int i = 0; i < (5 - trackerwrong1); i++){
+			int j = 0;
+
+			if (possibleWeapons[0] != incorrectGuesses1[i] && wbool0 == false){
+				possibleWeapons3[j] = possibleWeapons[0];
+				j++;
+			} else {wbool0 = true;}
+			if (possibleWeapons[1] != incorrectGuesses1[i] && wbool1 == false){
+				possibleWeapons3[j] = possibleWeapons[1];
+				j++;
+			} else {wbool1 = true;}
+			if (possibleWeapons[2] != incorrectGuesses1[i] && wbool2 == false){
+				possibleWeapons3[j] = possibleWeapons[2];
+				j++;
+			} else {wbool2 = true;}
+			if (possibleWeapons[3] != incorrectGuesses1[i] && wbool3 == false){
+				possibleWeapons3[j] = possibleWeapons[3];
+				j++;
+			} else {wbool3 = true;}
+			if (possibleWeapons[4] != incorrectGuesses1[i] && wbool4 == false){
+				possibleWeapons3[j] = possibleWeapons[4];
+				j++;
+			} else {wbool4 = true;}
+			}
+		} else if (trackerwrong1 == 5){
+			for (int k = 0; k < 5; k++){
+				possibleWeapons3[k] = possibleWeapons[k];
+			}
+		}
+
+		// run test to check file1 contents against arrays
         // sets counter to set size of possibleRoom3
         int trackerwrong2 = 5;
+		bool rbool0 = false, rbool1 = false, rbool2 = false, rbool3 = false, rbool4 = false;
         // opens file2
         file2.open("ComputerMemoryRoom.txt", ios :: in);
         // checks if file2 is open
@@ -219,51 +264,62 @@ void Computer::makeAccusation(){
             // close file2
             file2.close();
         }
-        cout << trackerwrong2 << endl;
-		// set string array for possible rooms
-        string possibleRoom3[trackerwrong2];
-        // opens file2
-        file2.open("ComputerMemoryRoom.txt", ios :: in);
+        // set string array for possible weapons
+		string possibleRoom3[trackerwrong2];
+		string incorrectGuesses2[5 - trackerwrong2];
+		// opens file2
+		file2.open("ComputerMemoryRoom.txt", ios :: in);
         // checks if file2 is open
         if (file2.is_open()){
             string line;
             // while loop to sort through each line in file
-            while (getline(file2, line)){
-                // for loop adding each unused guess into possibleRoom3
-                for (int l = 0; l < 5; l++){
-                    for (int j = 0; j < trackerwrong2; j++){
-                        if (line != possibleRoom[l] && trackerwrong2 != 5){
-							possibleRoom3[j] = possibleRoom[l]; 
-							cout  << line << " --------- " << possibleRoom3[j] << endl;
-                            //cout << possibleRoom3[j] << endl;
-							break;
-                        }
-						else if (trackerwrong2 == 5){
-                            possibleRoom3[j] = possibleRoom[l];
-							cout  << line << " --------- " << possibleRoom3[j] << endl;
-							break;
-						}
-                    }
-                }
-            }
+			for (int p = 0; p < (5 - trackerwrong2); p++){
+				getline(file2, line);
+				if (line != ""){
+					incorrectGuesses2[p] = line;
+				}
+				cout << incorrectGuesses2[p] << " incorrect guess rooms " << endl;
+			}
             // close file2
             file2.close();
         }
+
+		if (trackerwrong2 != 5){
+			for (int i = 0; i < (5 - trackerwrong2); i++){
+			int j = 0;
+
+			if (possibleRoom[0] != incorrectGuesses2[i] && rbool0 == false){
+				possibleRoom3[j] = possibleRoom[0];
+				j++;
+			} else {rbool0 = true;}
+			if (possibleRoom[1] != incorrectGuesses2[i] && rbool1 == false){
+				possibleRoom3[j] = possibleRoom[1];
+				j++;
+			} else {rbool1 = true;}
+			if (possibleRoom[2] != incorrectGuesses2[i] && rbool2 == false){
+				possibleRoom3[j] = possibleRoom[2];
+				j++;
+			} else {rbool2 = true;}
+			if (possibleRoom[3] != incorrectGuesses2[i] && rbool3 == false){
+				possibleRoom3[j] = possibleRoom[3];
+				j++;
+			} else {rbool3 = true;}
+			if (possibleRoom[4] != incorrectGuesses2[i] && rbool4 == false){
+				possibleRoom3[j] = possibleRoom[4];
+				j++;
+			} else {rbool4 = true;}
+			}
+
+		} else if (trackerwrong2 == 5){
+			for (int k = 0; k < 5; k++){
+				possibleRoom3[k] = possibleRoom[k];
+			}
+		}
 
         // fill with randomised input
         compLastGuess[0] = possibleCharacters3[rand() % trackerwrong0];
         compLastGuess[1] = possibleWeapons3[rand() % trackerwrong1];
         compLastGuess[2] = possibleRoom3[rand() % trackerwrong2];
-
-		for (int p = 0; p < 3; p++){
-			cout << compLastGuess[p] << endl;
-			cout << "HEREEEEEEEEEE " << endl;
-		}
-		for (int t = 0; t < trackerwrong0; t++){
-			cout << possibleCharacters3[t] << endl;
-			cout << "HEREEEEEEEEEE CHARACTERS " << endl;
-		}
-
     }
 
     /*//to be filled by random input NOt RANDOMISING RN
@@ -288,8 +344,6 @@ void Computer::makeAccusation(){
 
     //increase counter of how many turns the user has had
     guessCount ++;
-
-    //int correctCounter = checkAccusation();
 }
 
 string * Computer :: getAccusation(){

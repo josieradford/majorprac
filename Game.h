@@ -28,6 +28,8 @@ class Game {
         int numPlayers;
         int MaxNumGuesses;
         int gameDifficulty;
+        bool gameEND;
+        bool personWin;
         fstream file0;
         fstream file1;
         fstream file2;
@@ -45,8 +47,6 @@ class Game {
     */
         // creates a Game with randomised murder weapon, room and murderer
         Game(int NumRooms);
-
-
 
         //set up arrays for characters, weapons and rooms
         void fillArrays();
@@ -84,6 +84,8 @@ class Game {
         int checkAccusation(string * Accusation, string * murdererDetails);
         int checkAccusationComputer(string * compLastGuess, string * murdererDetails, int difficulty);
         
+        void gameENDMessage();
+
         // destructor
         //~Game();
 };
