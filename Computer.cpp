@@ -68,19 +68,16 @@ void Computer::makeAccusation(){
             if (compLastGuess[2] != possibleRoom[i]){
                 for (int j = 0; j < 4; j++){
                     possibleRoom2[j] = possibleRoom[i];
-                    //cout << possibleRoom2[j] << endl;
                 }
             }
 			if (compLastGuess[0] != possibleCharacters[i]){
                 for (int j = 0; j < 4; j++){
                     possibleCharacters2[j] = possibleCharacters[i];
-                    //cout << possibleCharacters2[j] << endl;
                 }
             }
 			if (compLastGuess[1] != possibleWeapons[i]){
                 for (int j = 0; j < 4; j++){
                     possibleWeapons2[j] = possibleWeapons[i];
-                    //cout << possibleWeapons2[j] << endl;
                 }
             }
         }
@@ -112,7 +109,6 @@ void Computer::makeAccusation(){
             // close file1
             file0.close();
         }
-		cout << trackerwrong0 << endl;
         // set string array for possible weapons
 		string possibleCharacters3[trackerwrong0];
 		string incorrectGuesses0[5 - trackerwrong0];
@@ -388,27 +384,18 @@ void Computer :: setDifficulty(){
 
     int loop = 0;
     
-	// to set valid and invalid responses
-    while (loop == 0){
-		// prompt and get player response
+	while (loop == 0){
+        // prompt and get player response
         cout << "Difficulty: ";
         cin >> difficulty;
 
-        // switch to test input
-        switch (difficulty){
-            case 1:
-                loop = 1;
-                break;
-            case 2:
-                loop = 2;
-                break;
-            case 3:
-                loop = 3;
-                break;
-            default: //if no valid input is given
-                cout << "Invalid response, please try again " << endl;
-                break;
-        }
+		if (difficulty == 1 || difficulty == 2 || difficulty == 3){
+			loop = 1;
+			break;
+		}
+		else {
+			cout << "Invalid response, please try again " << endl;
+		}
     }
 }
 
