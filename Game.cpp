@@ -122,7 +122,9 @@ Game :: Game(int numRooms, int numPlayers){
 
 // creates a Game with randomised murder weapon, room and murderer
 Game::Game(int NumRooms){
-    fillArrays();
+    gameIntro();
+
+	fillArrays();
     setMap();
     printMap();
 	gameEND = false;
@@ -175,6 +177,19 @@ Game::Game(int NumRooms){
 		remove("ComputerMemoryWeapon.txt");
 		remove("ComputerMemoryRoom.txt");
 	}
+}
+
+void Game :: gameIntro(){
+	cout << "Welcome, this is a simulation of the game Cluedo." << endl;
+	cout << "The game is played by a player (you) and a Computer," << endl;
+	cout << "You will take in turns to make accusations and try guess" << endl;
+	cout << "the murderer, murder weapon and room in which the murder took place" << endl;
+	cout << "The rules are as follows:" << endl;
+	cout << "1. Each guess you will be told the number of correct guesses in your accusation." << endl;
+	cout << "2. Depending on the difficulty you select the computer may or may not tell you if its" << endl;
+	cout << "   guess was correct, but it will always tell you its guess." << endl;
+	cout << "3. When the correct guess is made the game will end." << endl << endl;
+	cout << "Please enjoy the game!" << endl << endl;
 }
 
 //adds a room to array

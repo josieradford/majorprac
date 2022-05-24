@@ -38,6 +38,8 @@ class Game {
     public:
         // creates a default Game
         Game();
+    
+        void gameIntro();
     /*
         // creates a modifiable Game with interchangable characteristics
         Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, int maxNumGuesses);
