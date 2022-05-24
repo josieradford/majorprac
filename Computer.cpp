@@ -127,18 +127,14 @@ void Computer::makeAccusation(){
 				if (line != ""){
 					incorrectGuesses0[p] = line;
 				}
-				cout << incorrectGuesses0[p] << " incorrect guess character " << endl;
 			}
             // close file0
             file0.close();
         }
 
 		if (trackerwrong0 != 5){
-			cout << trackerwrong0 << "tracker";
 			for (int i = 0; i < (5 - trackerwrong0); i++){
 			int j = 0;
-
-			cout << incorrectGuesses0[i];
 
 			if (possibleCharacters[0] != incorrectGuesses0[i] && cbool0 == false){
 				possibleCharacters3[j] = possibleCharacters[0];
@@ -197,7 +193,6 @@ void Computer::makeAccusation(){
 		file1.open("ComputerMemoryWeapon.txt", ios :: in);
         // checks if file1 is open
         if (file1.is_open()){
-            cout << "opened " << endl;
 			string line;
             // while loop to sort through each line in file
 			for (int p = 0; p < (5 - trackerwrong1); p++){
@@ -205,7 +200,6 @@ void Computer::makeAccusation(){
 				if (line != ""){
 					incorrectGuesses1[p] = line;
 				}
-				cout << incorrectGuesses1[p] << " incorrect guess weapons " << endl;
 			}
             // close file1
             file1.close();
@@ -278,7 +272,6 @@ void Computer::makeAccusation(){
 				if (line != ""){
 					incorrectGuesses2[p] = line;
 				}
-				cout << incorrectGuesses2[p] << " incorrect guess rooms " << endl;
 			}
             // close file2
             file2.close();
