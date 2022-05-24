@@ -157,6 +157,9 @@ Game::Game(int NumRooms){
         if (gameEND == false){
 			// person player
 			players[0]->makeAccusation();
+			if (Accusationptr == 0){
+				gameEND = true;
+			}
         	checkAccusation(players[0]->getAccusation(), getMurder());
 		}
 		if (gameEND == false){
@@ -321,15 +324,15 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
         cout << "Computer got ";
         // if loop to test output
         if (compLastGuess[0] == murderDetails[0]){
-            cout << murderDetails[0] << ", ";
+            cout << murderDetails[0] << " ";
             correctCount++;
         }
         if (compLastGuess[1] == murderDetails[1]){
-            cout << murderDetails[1] << ", ";
+            cout << murderDetails[1] << " ";
             correctCount++;
         }
         if (compLastGuess[2] == murderDetails[2]){
-            cout << murderDetails[2] << ", ";
+            cout << murderDetails[2] << " ";
             correctCount++;
         }if (correctCount == 0){
             cout << "0 correct guesses" << endl;
@@ -360,7 +363,6 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
             file0.open("ComputerMemoryPerson.txt", ios :: app);
 			file0 << compLastGuess[0] << endl;
 			file0.close();
-			cout << "entered in file 0" << endl;
         }
 		// if loop to test output
         if (compLastGuess[1] == murderDetails[1]){
@@ -371,7 +373,6 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
 			file1.open("ComputerMemoryWeapon.txt", ios :: app);
 			file1 << compLastGuess[1] << endl;
 			file1.close();
-			cout << "entered in file 1" << endl;
 		}
 		// if loop to test output
         if (compLastGuess[2] == murderDetails[2]){
@@ -382,7 +383,6 @@ int Game::checkAccusationComputer(string * compLastGuess, string * murderDetails
 			file2.open("ComputerMemoryRoom.txt", ios :: app);
 			file2 << compLastGuess[2] << endl;
 			file2.close();
-			cout << "entered in file 2" << endl;
 		}
 		// output to show computers reaction
         if (correctCount == 0){

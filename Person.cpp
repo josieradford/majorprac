@@ -227,12 +227,6 @@ void Person::makeAccusation(){
 
     //increase counter of how many turns the user has had
     guessCount ++;
-
-    // int correctCounter = checkAccusation(Accusation);
-
-    //output how many were correct
-    //make this depend on a difficulty setting?
-    //cout << correctCounter << " out of 3 guesses were correct" << endl << endl;
 }
 
 string * Person :: getAccusation(){
