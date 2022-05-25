@@ -152,18 +152,26 @@ Game::Game(int NumRooms){
     setMurder();
     
 	//cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
+    cout <<"You are currently in the Conservatory." << endl; //always on first turn
 
     for (int j = 0; j < NumRooms; j++){
-        if (gameEND == false){
-			// person player
-			players[0]->makeAccusation();
-
-        	checkAccusation(players[0]->getAccusation(), getMurder());
-		}
 		if (gameEND == false){
+            // person player
+            for (int i = 0; i < 5; i++){ //print room description
+                if((players[0]->getLocation()) == (ptrR[i].getRoomName())){
+                    ptrR[i].printRoomDescription();
+                }
+            }
+            
+			players[0]->makeAccusation();
+        	checkAccusation(players[0]->getAccusation(), getMurder());
+
 			// computer player
         	players[1]->makeAccusation();
         	checkAccusationComputer(players[1]->getAccusation(), getMurder(), gameDifficulty);
+
+            printMap();
+            players[0]->changeLocation(); //change person's location
 		}
 		else {
 			gameENDMessage();
@@ -196,75 +204,47 @@ void Game :: gameIntro(){
 //adds a room to array
 
 void Game::fillRooms(){
+    srand ( time(NULL) );
+
     ptrR = new Room[NumRooms];
 
-    string* usedRoomNames = new string[5];
-    string* usedRoomWeapons = new string[5];
-    string* usedRoomCharacters = new string[5];
+    //create blank arrays for items that have already been assigned
+    int availIndexWeapons[5] = {0, 1, 2, 3 ,4}; //set to -1 when used
+    int availIndexChars[5] = {0, 1, 2, 3 ,4}; //set to -1 when used
 
-
+    //for each room, fill with unused items, and assign name from Rooms array
     for (int i = 0; i < NumRooms; i++){
-        bool nameUsed = false;
-        bool weaponUsed = false;
-        bool characterUsed = false;
+        bool weaponSet = false;
+        bool charSet = false;
+        string newRoomCharacter = " ";
+        string newRoomWeapon = " ";
+        
+        ptrR[i].setRoomName(Rooms[i]); //fills room names directly from array
 
-        string newRoomName = Rooms[rand() % 5];
-
-        //iterates over number of rooms already setup
-        //checks if room name has already been used
-        for (int k = 0; k <= i; k++){
-            if (usedRoomNames[k] == newRoomName){
-                nameUsed = true;
-                break;
+        while (weaponSet == false){
+             int newRoomWeapIndex = (rand() % 5);
+            for (int k = 0; k < NumRooms; k++){
+                if (availIndexWeapons[k] == newRoomWeapIndex){
+                    ptrR[i].setWeapon(Weapons[newRoomWeapIndex]);
+                    availIndexWeapons[k] = -1;
+                    weaponSet = true;
+                }
             }
         }
-        
-        //sets room name
-        if (nameUsed == false){
-            ptrR[i].setRoomName(newRoomName);
-            usedRoomNames[i] = newRoomName;
-        }
-        
-        string newRoomCharacter = Characters[rand() % 5];
+       
 
-        //iterates over number of rooms already setup
-        //checks if character has already been allocated 
-        for (int k = 0; k <= i; k++){
-            if (usedRoomCharacters[k] == newRoomCharacter){
-                characterUsed = true;
-                break;
+        while (charSet == false){
+             int newRoomCharIndex = (rand() % 5);
+            for (int k = 0; k < NumRooms; k++){
+                if (availIndexChars[k] == newRoomCharIndex){
+                    ptrR[i].setCharacter(Characters[newRoomCharIndex]);
+                    availIndexChars[k] = -1;
+                    charSet = true;
+                }
             }
-        }
-        
-        //sets character to room
-        if (characterUsed == false){
-            ptrR[i].setCharacter(newRoomCharacter);
-            usedRoomCharacters[i] = newRoomCharacter;
-        }
-        
-        string newRoomWeapon = Weapons[rand() % 5];
-
-        //iterates over number of rooms already setup
-        //checks if weapon has already been allocated 
-        for (int k = 0; k <= i; k++){
-            if (usedRoomWeapons[k] == newRoomWeapon){
-                weaponUsed = true;
-                break;
-            }
-        }
-        
-        //sets weapon to room
-        if (weaponUsed == false){
-            ptrR[i].setWeapon(newRoomWeapon);
-            usedRoomWeapons[i] = newRoomWeapon;
         }
         
     }
-
-    delete[] (usedRoomCharacters);
-    delete[] (usedRoomNames);
-    delete[] (usedRoomWeapons);
-
     
 }
 
@@ -274,7 +254,7 @@ void Game::fillRooms(){
 void Game::fillArrays(){
     
     Rooms = new string[5];
-    string RoomSet[5] = {"Garden", "Ballroom", "Library", "Conservatory", "Kitchen"};
+    string RoomSet[5] = {"Conservatory", "Ballroom", "Garden", "Library", "Kitchen"};
     Weapons = new string[5];
     string WeaponSet[5] = {"Knife", "Revolver", "Candlestick", "Rope", "Pipe"}; 
     Characters = new string[5];
@@ -532,22 +512,6 @@ int Game::getMaxNumGuesses(){
 
 
 void Game::setPlayers(){
-    /*
-    //VERSION 1 WORKS FOR PLAYER FUNCTION
-    //create player array
-    ptrP = new Player[numPeople + numComputers];
-
-    //fill array with people
-    for (int i = 0; i < numPeople; i++){
-        ptrP[i] = Person();
-    }
-
-    //fill array with computers
-    for (int i = numPeople; i < numComputers+numPeople; i++){
-        ptrP[i] = Computer();
-    }
-    */
-
     array<Player *, 2> players;
     players[0] = new Person;
     players[1] = new Computer;

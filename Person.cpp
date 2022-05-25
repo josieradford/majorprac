@@ -9,7 +9,7 @@ Person:: Person(){
     finalAccusation = false;
     guessCount = 0;
     maxGuesses = 4;
-    this-> Location = "emptyL";
+    this-> Location = "Conservatory";
     Accusation = new string[4];
 
     //empty accusation array
@@ -94,10 +94,10 @@ void Person::makeAccusation(){
         cout << "\nYou must make your final accusation this turn." << endl;
     }
 
-    int loop0 = 0;
+    bool valid0 = false;
 
     // to set valid and invalid responses
-    while (loop0 == 0){
+    while (valid0 == false){
         //making accusation
         cout << "\nEnter your guess for the murderer: " << endl;
         cout << "The options are: Mr Green, Ms Scarlet, Professor Plum, Colonel Mustard or Ms Peacock" << endl;
@@ -108,23 +108,20 @@ void Person::makeAccusation(){
 
         // switch to test input
         if (name == "Mr Green" || name == "Ms Scarlet" || name == "Professor Plum" || name == "Colonel Mustard" || name == "Ms Peacock"){
-            loop0 = 1;
+            valid0 = 1;
             break;
         }
         else{
             cout << "Invalid entry please try again." << endl;
-            cout << "Please make sure you are using capitals and your input looks the same as the options" << endl << endl;
+            cout << "Please make sure you are using capitals and your input looks the same as the above options." << endl << endl;
         } 
     }
 
-    /*cin >> Accusation[1];
-    getline(cin, Accusation[1]);
-    cout << "2 " << Accusation[1] << endl;*/
 
-    int loop1 = 0;
+    bool valid1 = false;
 
     // to set valid and invalid responses
-    while (loop1 == 0){
+    while (valid1 == false){
         //making accusation
         cout << "Enter your guess for the murder weapon: " << endl;
         cout << "The options are: Knife, Revolver, Candlestick, Rope or Pipe" << endl;
@@ -133,38 +130,38 @@ void Person::makeAccusation(){
 
         string weapon = Accusation[2];
 
-        // switch to test input
+        // switch to test input for weapon
         if (weapon == "Knife"){
-            loop1 = 1;
+            valid1 = true;
             break;
         }
         else if (weapon == "Revolver"){
-            loop1 = 1;
+            valid1 = true;
             break;
         }
         else if (weapon == "Candlestick"){
-            loop1 = 1;
+            valid1 = true;
             break;
         }
         else if (weapon == "Rope"){
-            loop1 = 1;
+            valid1 = true;
             break;
         }
         else if (weapon == "Pipe"){
-            loop1 = 1;
+            valid1 = true;
             break;
         }
         //else if ()
         else{
             cout << "Invalid entry please try again." << endl;
-            cout << "Please make sure you are using capitals and your input looks the same as the options" << endl << endl;
+            cout << "Please make sure you are using capitals and your input looks the same as above the options." << endl << endl;
         } 
     }
 
-    int loop2 = 0;
+    bool valid2 = false;
 
     // to set valid and invalid responses
-    while (loop2 == 0){
+    while (valid2 == false){
         //making accusation
         cout << "Enter your guess for the room: " << endl;
         cout << "The options are: Garden, Ballroom, Library, Conservatory or Kitchen" << endl;
@@ -175,28 +172,28 @@ void Person::makeAccusation(){
 
         // switch to test input
         if (room == "Garden"){
-            loop2 = 1;
+            valid2 = true;
             break;
         }
         else if (room == "Ballroom"){
-            loop2 = 1;
+            valid2 = true;
             break;
         }
         else if (room == "Library"){
-            loop2 = 1;
+            valid2 = true;
             break;
         }
         else if (room == "Conservatory"){
-            loop2 = 1;
+            valid2 = true;
             break;
         }
         else if (room == "Kitchen"){
-            loop2 = 1;
+            valid2 = true;
             break;
         }
         else{
             cout << "Invalid entry please try again." << endl;
-            cout << "Please make sure you are using capitals and your input looks the same as the options" << endl << endl;
+            cout << "Please make sure you are using capitals and your input looks the same as the above options." << endl << endl;
         } 
     }
 
@@ -219,13 +216,85 @@ string * Person :: getAccusation(){
     return Accusation;
 }
 
+string Person::getLocation(){
+    return Location;
+}
+
 // virtual change location function
 void Person::changeLocation(){
-    cout << "Allow for location change" << endl;
-    cout << "You are currently in " << Location << endl;
+    string newLocation = " ";
 
-    //if Location 
+    cout << "You are currently in the " << Location << "." << endl;
 
+    //get new location
+    bool validInput = false;
+    while(validInput == false){
+        cout << "From the " <<  Location << " you can move to:" << endl;
+        if(Location == "Kitchen"){
+            //options
+            cout << "Library, Garden or Ballroom" << endl;
+            cout << "Which room would you like to move to?" << endl;
+            cin >> newLocation; //need input validation
+            if (newLocation == "Library" ||newLocation == "Garden"|| newLocation == "Ballroom"){
+                validInput = true;
+                break;
+            }else{
+                cout << "You cannot move to " << newLocation << "." << endl;
+            }
+        }else if (Location == "Library"){
+            //options
+            cout << "Kitchen, Garden or Conservatory" << endl;
+            cout << "Which room would you like to move to?" << endl;
+            cin >> newLocation; //need input validation
+            if (newLocation == "Conservatory" ||newLocation == "Garden"|| newLocation == "Kitchen"){
+                validInput = true;
+                break;
+            }else{
+                cout << "You cannot move to " << newLocation << "." << endl;
+            }
+        }else if (Location == "Garden"){
+            //options
+            cout << "Conservatory, Ballroom, Library or Kitchen" << endl;
+            cout << "Which room would you like to move to?" << endl;
+            cin >> newLocation; //need input validation
+            if (newLocation == "Conservatory" || newLocation == "Ballroom"|| newLocation == "Library"|| newLocation == "Kitchen"){
+                validInput = true;
+                break;
+            }else{
+                cout << "You cannot move to " << newLocation << "." << endl;
+            }
+        }else if (Location == "Ballroom"){
+            //options
+            cout << "Conservatory, Garden or Kitchen" << endl;
+            cout << "Which room would you like to move to?" << endl;
+            cin >> newLocation; //need input validation
+            if (newLocation == "Conservatory" || newLocation == "Garden"|| newLocation == "Kitchen"){
+                validInput = true;
+                break;
+            }else{
+                cout << "You cannot move to " << newLocation << "." << endl;
+            }
+        }else if (Location == "Conservatory"){
+            //options
+            cout << "Library, Ballroom or Garden" << endl;
+            cout << "Which room would you like to move to?" << endl;
+            cin >> newLocation; //need input validation
+            if (newLocation == "Library" || newLocation == "Ballroom"|| newLocation == "Garden"){
+                validInput = true;
+                break;
+            }else{
+                cout << "You cannot move to " << newLocation << "." << endl;
+            }
+            
+        }
+
+    }
+    
+    //change location
+    Location = newLocation;
+
+    cout << "You have entered the " << Location << "." << endl;
+    
 
 }
 
