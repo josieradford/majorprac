@@ -78,15 +78,17 @@ Game::Game(int NumRooms){
 }
 
 void Game :: gameIntro(){
-	cout << "Welcome, this is a simulation of the game Cluedo." << endl;
+	cout << endl << "Welcome, this is a simulation of the game Cluedo." << endl;
 	cout << "The game is played by a player (you) and a Computer," << endl;
-	cout << "You will take in turns to make accusations and try guess" << endl;
-	cout << "the murderer, murder weapon and room in which the murder took place" << endl;
+	cout << "You will take it in turns to make accusations and try to guess" << endl;
+	cout << "the murderer, murder weapon and room in which the murder took place." << endl;
 	cout << "The rules are as follows:" << endl;
-	cout << "1. Each guess you will be told the number of correct guesses in your accusation." << endl;
-	cout << "2. Depending on the difficulty you select the computer may or may not tell you if its" << endl;
+    cout << "1. Each turn, you must move between rooms adjacent to your current location." << endl;
+    cout << "2. You will then accuse a character of having commited the murder in that room." << endl;
+	cout << "3. Each guess you will be told the number of correct guesses in your accusation." << endl;
+	cout << "4. Depending on the selected difficulty, the computer may or may not tell you if its" << endl;
 	cout << "   guess was correct, but it will always tell you its guess." << endl;
-	cout << "3. When the correct guess is made the game will end." << endl << endl;
+	cout << "5. When the correct guess is made the game will end." << endl << endl;
 	cout << "Please enjoy the game!" << endl << endl;
 }
 
