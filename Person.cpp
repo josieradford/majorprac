@@ -36,11 +36,11 @@ Person:: Person(int _maxGuesses){
 //  make accusation function
 void Person::makeAccusation(){
     finalAccusation = false; //create this boolean as part of Person.h for access outside of thise scope
-    bool validResponse = false;
-    string response;
+    //bool validResponse = false;
+    //string response;
     int max = maxGuesses;
 
-    while (validResponse == false){
+    /*while (validResponse == false){
         if (guessCount < max){
             char response = ' ';
 
@@ -60,7 +60,7 @@ void Person::makeAccusation(){
                 break;
             }
         }
-    }
+    }*/
 
     /*//determine whether making final accusation or not
     while (validResponse == false && guessCount < max) {
@@ -91,7 +91,7 @@ void Person::makeAccusation(){
     //checks if player is on final turn
     if (guessCount == max){
         finalAccusation = true;
-        cout << "You must make your final accusation this turn." << endl;
+        cout << "\nYou must make your final accusation this turn." << endl;
     }
 
     bool valid0 = false;
@@ -99,7 +99,7 @@ void Person::makeAccusation(){
     // to set valid and invalid responses
     while (valid0 == false){
         //making accusation
-        cout << "Enter your guess for the murderer: " << endl;
+        cout << "\nEnter your guess for the murderer: " << endl;
         cout << "The options are: Mr Green, Ms Scarlet, Professor Plum, Colonel Mustard or Ms Peacock" << endl;
         // enter in both parts of murderer name
         cin >> Accusation[0] >> Accusation[1];
@@ -107,24 +107,8 @@ void Person::makeAccusation(){
         string name = Accusation[0]+" "+Accusation[1];
 
         // switch to test input
-        if (name == "Mr Green"){
-            valid0 = true;
-            break;
-        }
-        else if (name == "Ms Scarlet"){
-            valid0 = true;
-            break;
-        }
-        else if (name == "Professor Plum"){
-            valid0 = true;
-            break;
-        }
-        else if (name == "Colonel Mustard"){
-            valid0 = true;
-            break;
-        }
-        else if (name == "Ms Peacock"){
-            valid0 = true;
+        if (name == "Mr Green" || name == "Ms Scarlet" || name == "Professor Plum" || name == "Colonel Mustard" || name == "Ms Peacock"){
+            valid0 = 1;
             break;
         }
         else{
@@ -167,6 +151,7 @@ void Person::makeAccusation(){
             valid1 = true;
             break;
         }
+        //else if ()
         else{
             cout << "Invalid entry please try again." << endl;
             cout << "Please make sure you are using capitals and your input looks the same as above the options." << endl << endl;

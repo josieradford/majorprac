@@ -393,11 +393,16 @@ void Computer :: setDifficulty(){
 
 		if (difficulty == 1 || difficulty == 2 || difficulty == 3){
 			validResponse = true; //accept input
+		} 
+		else if (!cin){
+			cout << "Invalid response, difficulty set to easy" << endl;
+			difficulty = 1;
+			break;
 		}
 		else {
-			cout << "Invalid response, please try again " << endl;
-            break;
-           
+			cout << "Invalid response, difficulty set to easy" << endl;
+			difficulty = 1;
+			break;
 		}
     }
 }
