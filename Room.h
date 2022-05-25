@@ -31,10 +31,9 @@ class Room {
         // setter and getter Murderer
         void setCharacter(string _Character);
         string getCharacter();
-        
-        // setter and getter Secret Passage
-        void setPassage(bool _Passage);
-        bool getPassage();
+    
+
+        void printRoomDescription();
 
         // destructor
         ~Room();

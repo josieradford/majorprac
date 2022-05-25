@@ -47,13 +47,30 @@ string Room::getCharacter(){
     return Character;
 }
         
-// setter and getter Secret Passage
-void  Room::setPassage(bool _Passage){
-    this->Passage = _Passage;
-}
 
-bool Room::getPassage(){
-    return Passage;
+void Room::printRoomDescription(){
+    srand ( time(NULL) );
+    string descriptions[4] = {"suspicious", "relaxed", "nervous", "worried"};
+    string charDescription = descriptions[rand() % 3];
+
+    string weaponLocation = " ";
+    string room = getRoomName();
+
+    if (room == "Kitchen"){
+        weaponLocation = "counter";
+    } else if (room == "Garden"){
+        weaponLocation = "ground";
+    }else if (room == "Conservatory" || room == "Ballroom"){
+        weaponLocation = "floor";
+    } else if (room == "Library"){
+        weaponLocation = "desk";
+    } else{
+        cout << "invalid room name : returned from printRoomDescription";
+    }
+
+    cout << "In the " << getRoomName() << " there is a " << getWeapon()
+    << " laying on the " << weaponLocation << " and " << getCharacter()
+    << " is standing there looking " << charDescription << "." << endl;
 }
 // destructor
 Room::~Room(){
