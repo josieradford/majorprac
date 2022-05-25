@@ -10,116 +10,6 @@
 
 using namespace std;
 
-//default with no input
-/*
-Game::Game(){ //has two players default
-    
-    //fill arrrays
-    fillArrays();
-    
-    MaxNumGuesses = 4;
-
-    //setup rooms
-    this->NumRooms = 4;
-    
-    fillRooms();
-
-    //create players
-    numPeople = 1;
-    numComputers = 1;
-    numPlayers = numPeople + numComputers;
-    setPlayers();
-
-    //set up murder so that each player holds info
-    setMurder();
-
-    //copy murder details to each player
-    for (int i = 0; i < numPlayers; i++){
-        ptrP[i].murderDetails = murderDetails;
-    }
-
-    startGame();
-}
-
-//creates a modifiable Game with interchangable characteristics
-Game::Game(int NumRooms, string MurWeapon, string Murderer, string MurLocation, int MaxNumGuesses){
-    //setup rooms
-    this->NumRooms = NumRooms;
-    ptrR = new Room[NumRooms];
-    this->MaxNumGuesses = MaxNumGuesses;
-
-    fillRooms();
-
-    //create players
-    int numPlayers = 2;
-    ptrP = new Player[numPlayers];
-    ptrP[0] = Person();
-    //ptrP[1] = Computer();
-
-    //set up murder
-    murderDetails = new string[3];
-    murderDetails[0] = Murderer;
-    murderDetails[1] = MurLocation;
-    murderDetails[2] = MurWeapon;
-}
-Game :: Game(int numRooms, int numPlayers){
-    
-    //fill arrrays
-    setOptions();
-
-    MaxNumGuesses = 4;
-
-    //setup rooms
-    this->NumRooms = numRooms;
-    ptrR = new Room[NumRooms];
-    fillRooms();
-
-    // sets pointer array to create players
-    Player * players[numPlayers];
-    for(int k = 0; k < numPlayers; k++){
-        players[0] = new Person;
-        if (players[k] != players[0]){
-            players[k] = new Computer;
-        }
-    }
-
-    // set difficulty level for computer players
-    cout << "The difficulty level selected will be applied to all players." << endl;
-    players[1]->setDifficulty();
-    // uncomment if we want to make specific to each computer player
-    cout << "You've selected to have " << (numPlayers - 1) << " computer players" << endl;
-    cout << "Each difficulty level selected will be applied to the corresponding players." << endl;
-    for(int m = 0; m < numPlayers; m++){
-        if (players[m] != players[0]){
-            cout << "For player " << m << " " ;
-            players[m]->setDifficulty();
-        }
-    }
-
-    //create players
-    ptrP = new Player[numPlayers];
-    ptrP[0] = Person();
-    //ptrP[1] = Computer();
-
-    //set up murder so that pointer holds info
-    setMurder();
-
-
-    //pass murder details to each player
-    for (int i = 0; i < numPlayers; i++){
-        ptrP[i].murderDetails = this->murderDetails;
-    }
-
-    //begin make accusation loop
-    for (int j = 0; j < MaxNumGuesses; j++){
-        players[0]->makeAccusation(); //player 1 (person) make accusation
-        for(int l = 1; l < numPlayers; l++){
-            players[l]->makeAccusation(); //players 2+ (computer) make accusation
-        }
-    }    
-}
-*/
-
 // creates a Game with randomised murder weapon, room and murderer
 Game::Game(int NumRooms){
     gameIntro();
@@ -151,12 +41,12 @@ Game::Game(int NumRooms){
     //set up murder so that each player holds info
     setMurder();
     
-	//cout << "Murder info track: " << Murderer  << " " << MurLocation << " " << MurWeapon << endl << endl;
-    cout <<"You are currently in the Conservatory." << endl; //always on first turn
-
     for (int j = 0; j < NumRooms; j++){
 		if (gameEND == false){
             // person player
+            printMap();
+            players[0]->changeLocation(); //change person's location
+
             for (int i = 0; i < 5; i++){ //print room description
                 if((players[0]->getLocation()) == (ptrR[i].getRoomName())){
                     ptrR[i].printRoomDescription();
@@ -170,8 +60,7 @@ Game::Game(int NumRooms){
         	players[1]->makeAccusation();
         	checkAccusationComputer(players[1]->getAccusation(), getMurder(), gameDifficulty);
 
-            printMap();
-            players[0]->changeLocation(); //change person's location
+            
 		}
 		else {
 			gameENDMessage();
@@ -189,15 +78,17 @@ Game::Game(int NumRooms){
 }
 
 void Game :: gameIntro(){
-	cout << "Welcome, this is a simulation of the game Cluedo." << endl;
+	cout << endl << "Welcome, this is a simulation of the game Cluedo." << endl;
 	cout << "The game is played by a player (you) and a Computer," << endl;
-	cout << "You will take in turns to make accusations and try guess" << endl;
-	cout << "the murderer, murder weapon and room in which the murder took place" << endl;
+	cout << "You will take it in turns to make accusations and try to guess" << endl;
+	cout << "the murderer, murder weapon and room in which the murder took place." << endl;
 	cout << "The rules are as follows:" << endl;
-	cout << "1. Each guess you will be told the number of correct guesses in your accusation." << endl;
-	cout << "2. Depending on the difficulty you select the computer may or may not tell you if its" << endl;
+    cout << "1. Each turn, you must move between rooms adjacent to your current location." << endl;
+    cout << "2. You will then accuse a character of having commited the murder in that room." << endl;
+	cout << "3. Each guess you will be told the number of correct guesses in your accusation." << endl;
+	cout << "4. Depending on the selected difficulty, the computer may or may not tell you if its" << endl;
 	cout << "   guess was correct, but it will always tell you its guess." << endl;
-	cout << "3. When the correct guess is made the game will end." << endl << endl;
+	cout << "5. When the correct guess is made the game will end." << endl << endl;
 	cout << "Please enjoy the game!" << endl << endl;
 }
 
@@ -483,7 +374,6 @@ void Game::setMurder(){ //uses randomiser
     murderDetails[1] = Weapons[rand() % NumRooms];
     murderDetails[0] = Characters[rand() % NumRooms];
 
-    //cout << "Murder details from setMurder: " << murderDetails[0] << " " << murderDetails[1] << " " << murderDetails[2] << endl;
 }
 
 string * Game::getMurder(){

@@ -151,7 +151,6 @@ void Person::makeAccusation(){
             valid1 = true;
             break;
         }
-        //else if ()
         else{
             cout << "Invalid entry please try again." << endl;
             cout << "Please make sure you are using capitals and your input looks the same as above the options." << endl << endl;
@@ -161,8 +160,10 @@ void Person::makeAccusation(){
     bool valid2 = false;
 
     // to set valid and invalid responses
+    /*
     while (valid2 == false){
         //making accusation
+        
         cout << "Enter your guess for the room: " << endl;
         cout << "The options are: Garden, Ballroom, Library, Conservatory or Kitchen" << endl;
         // get murder room accusation
@@ -194,8 +195,12 @@ void Person::makeAccusation(){
         else{
             cout << "Invalid entry please try again." << endl;
             cout << "Please make sure you are using capitals and your input looks the same as the above options." << endl << endl;
-        } 
+        }
+        
     }
+    */
+    //using current location as guess
+    Accusation[3] = Location;
 
     cout << "\nYour accusation is:" << endl;
     //making final accusation
