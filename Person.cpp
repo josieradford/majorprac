@@ -57,6 +57,7 @@ void Person::makeAccusation(){
             }
             else {
                 cout << "Invalid response please try again." << endl;
+                break;
             }
         }
     }

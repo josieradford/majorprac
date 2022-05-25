@@ -379,22 +379,25 @@ void Computer::changeLocation(){
 // determine level of difficulty
 void Computer :: setDifficulty(){
     // prompt
-	cout << "\nWhat level of difficulty would you like?" << endl;
-    cout << "1. Easy" << endl << "2. Medium" << endl << "3. Hard" << endl;
+	
 
-    int loop = 0;
+    bool validResponse = false;
     
-	while (loop == 0){
+	while (validResponse == false){
+        cout << "\nWhat level of difficulty would you like?" << endl;
+        cout << "1. Easy" << endl << "2. Medium" << endl << "3. Hard" << endl;
         // prompt and get player response
+
         cout << "Difficulty: ";
         cin >> difficulty;
 
 		if (difficulty == 1 || difficulty == 2 || difficulty == 3){
-			loop = 1;
-			break;
+			validResponse = true; //accept input
 		}
 		else {
 			cout << "Invalid response, please try again " << endl;
+            break;
+           
 		}
     }
 }
