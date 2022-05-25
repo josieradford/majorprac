@@ -107,26 +107,13 @@ void Person::makeAccusation(){
         string name = Accusation[0]+" "+Accusation[1];
 
         // switch to test input
-        if (name == "Mr Green"){
+        if (name == "Mr Green" || name == "Ms Scarlet" || name == "Professor Plum" || name == "Colonel Mustard" || name == "Ms Peacock"){
             loop0 = 1;
             break;
         }
-        else if (name == "Ms Scarlet"){
-            loop0 = 1;
-            break;
-        }
-        else if (name == "Professor Plum"){
-            loop0 = 1;
-            break;
-        }
-        else if (name == "Colonel Mustard"){
-            loop0 = 1;
-            break;
-        }
-        else if (name == "Ms Peacock"){
-            loop0 = 1;
-            break;
-        }
+        //else if (){
+
+        //}
         else{
             cout << "Invalid entry please try again." << endl;
             cout << "Please make sure you are using capitals and your input looks the same as the options" << endl << endl;
@@ -170,6 +157,7 @@ void Person::makeAccusation(){
             loop1 = 1;
             break;
         }
+        //else if ()
         else{
             cout << "Invalid entry please try again." << endl;
             cout << "Please make sure you are using capitals and your input looks the same as the options" << endl << endl;

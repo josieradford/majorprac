@@ -157,10 +157,7 @@ Game::Game(int NumRooms){
         if (gameEND == false){
 			// person player
 			players[0]->makeAccusation();
-			/*if (Accusationptr == 0){
-				gameEND = true;
-			}
-            */
+
         	checkAccusation(players[0]->getAccusation(), getMurder());
 		}
 		if (gameEND == false){
