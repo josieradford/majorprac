@@ -89,6 +89,6 @@ class Game {
         void gameENDMessage();
 
         // destructor
-        //~Game();
+        ~Game();
 };
 #endif

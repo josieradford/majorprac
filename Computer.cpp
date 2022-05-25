@@ -380,7 +380,6 @@ void Computer::changeLocation(){
 void Computer :: setDifficulty(){
     // prompt
 	
-
     bool validResponse = false;
     
 	while (validResponse == false){
@@ -411,5 +410,7 @@ int Computer :: getDifficulty(){
     return difficulty;
 }
 
-//Computer:: ~Computer(){
-//}
+Computer:: ~Computer(){
+	delete[] Accusation;
+	delete[] compLastGuess;
+}

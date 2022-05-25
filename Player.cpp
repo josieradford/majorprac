@@ -71,5 +71,5 @@ int Player :: getDifficulty(){
 // destructor
 
 Player::~Player(){
-    
+    delete[] Accusation;
 }

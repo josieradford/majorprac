@@ -171,7 +171,7 @@ Game::Game(int NumRooms){
 		}
     }
 
-	cout << "\nThanks for playing ! \nThats the end." << endl;
+	cout << "\nThanks for playing ! \nThats the end.\n" << endl;
 
 	if (gameDifficulty == 3){
 		remove("ComputerMemoryPerson.txt");
@@ -571,9 +571,11 @@ void Game :: gameENDMessage(){
 }
         
 // destructor
-/*
 Game:: ~Game(){
-    delete ptrR;
-
+    delete[] ptrR;
+	delete[] Rooms;
+	delete[] Weapons;
+	delete[] Characters;
+	delete[] ptrM;
+	delete[] murderDetails;
 }
-*/

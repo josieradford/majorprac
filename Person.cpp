@@ -236,5 +236,6 @@ int Person :: getDifficulty(){
     return 0;
 }
 
-//Person:: ~Person(){
-//}
+Person:: ~Person(){
+    delete[] Accusation;
+}

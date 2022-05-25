@@ -40,6 +40,6 @@ class Computer : public Player{ //protected carries over everything but private
 
     int randomNum();
 
-    //~Computer();
+    ~Computer();
 };
 #endif

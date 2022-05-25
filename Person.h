@@ -26,10 +26,7 @@ class Person : public Player{ //protected carries over everything but private
 
     string * getAccusation();
     int getDifficulty();
-    //~Person();
-       
-       
-
-
+    
+    ~Person();
 };
 #endif

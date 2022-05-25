@@ -11,7 +11,7 @@ class Player {
         string Location;
 
         //accusation array using: 1Character, 2Weapon, 3Room
-        string* Accusation;
+        string * Accusation;
         string * compLastGuess;
 
         //currentGuess
@@ -20,7 +20,7 @@ class Player {
         string currentGuessLocation;
 
         //murderer info
-        string *murderDetails;
+        string * murderDetails;
 
     //public:
         // default constructor
